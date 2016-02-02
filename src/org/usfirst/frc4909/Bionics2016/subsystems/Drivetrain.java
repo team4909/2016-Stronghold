@@ -57,7 +57,7 @@ public class Drivetrain extends Subsystem {
     
     public void moveRobot(double left, double right)
     {
-		double pow = (left + right)/2;
+		/*double pow = (left + right)/2;
 		
     	if(Math.abs(left-right) < STRAIGHT_THRESH && !straightMode)
     	{
@@ -75,7 +75,7 @@ public class Drivetrain extends Subsystem {
     			double rotCorrection = -K * error;
     			driveControl.tankDrive(pow, pow-rotCorrection);
     		}
-    	}
+    	}*/
     		
     	driveControl.tankDrive(left, right);
     }
