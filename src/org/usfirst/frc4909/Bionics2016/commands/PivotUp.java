@@ -2,12 +2,12 @@ package org.usfirst.frc4909.Bionics2016.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class PivotDown extends Command {
+public class PivotUp extends Command {
 
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
