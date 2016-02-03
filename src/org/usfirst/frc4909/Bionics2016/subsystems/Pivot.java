@@ -76,8 +76,20 @@ public class Pivot extends PIDSubsystem {
     {
     	pivotControl.set(0.25);
     }
+    public boolean getTopSwitch()
+    {
+    	return pivotTopSwitch.get();
+    }
+    public boolean getBottomSwitch()
+    {
+    	return pivotBottomSwitch.get();
+    }
     public void movePivot(double speed)
     {
+    	if(speed > 0 && getBottomSwitch())
+    		return;
+    	if(speed < 0 && getTopSwitch())
+    		return;
     	pivotControl.set(speed);
     }
 	@Override
