@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Spark;
@@ -90,7 +91,7 @@ public class RobotMap {
         drivetraingyro = new AnalogGyro(0);
         LiveWindow.addSensor("Drivetrain", "gyro", drivetraingyro);
         drivetraingyro.setSensitivity(0.007);
-        shootershooterLeftWheel = new Spark(4);
+        shootershooterLeftWheel = new Spark(6);//should be 4
         LiveWindow.addActuator("Shooter", "shooterLeftWheel", (Spark) shootershooterLeftWheel);
         
         shootershooterRightWheel = new Spark(8);
@@ -104,14 +105,23 @@ public class RobotMap {
         LiveWindow.addSensor("Shooter", "rightShootEncoder", shooterrightShootEncoder);
         shooterrightShootEncoder.setDistancePerPulse(1.0);
         shooterrightShootEncoder.setPIDSourceType(PIDSourceType.kRate);
-        feederfeedAxle = new Spark(5);
+        feederfeedAxle = new Spark(4);//should be 5
         LiveWindow.addActuator("Feeder", "feedAxle", (Spark) feederfeedAxle);
         
         feederfeedSwitch = new DigitalInput(0);
         LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
         
-        pivotpivotControl = new Spark(6);
+        
+        pivotTopSwitch= new DigitalInput(13);
+        //LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
+        
+        pivotBottomSwitch = new DigitalInput(14);
+        //LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
+        
+        
+        pivotpivotControl = new Spark(5);
         LiveWindow.addActuator("Pivot", "pivotControl", (Spark) pivotpivotControl);
+        
         
         pivotpivotEncoder = new Encoder(1, 2, false, EncodingType.k4X);
         LiveWindow.addSensor("Pivot", "pivotEncoder", pivotpivotEncoder);

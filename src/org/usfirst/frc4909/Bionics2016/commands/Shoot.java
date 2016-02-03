@@ -54,7 +54,8 @@ public class Shoot extends Command {
     	{
     		return true;
     	}
-    	else{
+    	else
+    	{
     		return false;
     	}
     }

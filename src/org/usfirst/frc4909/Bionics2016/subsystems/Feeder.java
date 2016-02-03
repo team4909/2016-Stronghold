@@ -47,6 +47,7 @@ public class Feeder extends Subsystem {
     public void stopFeed()
     {
     	feedAxle.set(0);
+    	//feedAxle.disable();
     }
     
     public void feedIn()
