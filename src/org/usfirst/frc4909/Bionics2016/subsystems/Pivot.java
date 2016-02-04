@@ -52,7 +52,7 @@ public class Pivot extends PIDSubsystem {
     private final DigitalInput pivotTopSwitch = RobotMap.pivotTopSwitch;
     private final DigitalInput pivotBottomSwitch = RobotMap.pivotBottomSwitch;
 
-    private final double kENCODER_TO_DEGREES = 8192/360;
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -66,11 +66,10 @@ public class Pivot extends PIDSubsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
-    //set angle to 45
-    public void setAngle45()
+    
+    public void setAngle(double angle)
     {
-    	double speed = 256 - pivotEncoder.getRaw();
-    	pivotControl.set(speed/256);
+    	setSetpoint(angle);
     }
     public void pivotDown()
     {
@@ -99,11 +98,15 @@ public class Pivot extends PIDSubsystem {
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub
-		return pivotEncoder.getRaw();
+		return pivotEncoder.getDistance();
 	}
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
+		if(output > 0 && getBottomSwitch())
+    		return;
+    	if(output < 0 && getTopSwitch())
+    		return;
 		pivotControl.pidWrite(output);
 	}
 }

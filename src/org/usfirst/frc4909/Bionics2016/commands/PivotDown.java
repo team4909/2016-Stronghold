@@ -12,6 +12,7 @@ public class PivotDown extends Command {
 
 	@Override
 	protected void initialize() {
+		Robot.pivot.disable();
 		// TODO Auto-generated method stub
 		
 	}

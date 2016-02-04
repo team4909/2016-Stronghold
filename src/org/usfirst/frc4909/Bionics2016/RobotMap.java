@@ -125,8 +125,8 @@ public class RobotMap {
         
         pivotpivotEncoder = new Encoder(1, 2, false, EncodingType.k4X);
         LiveWindow.addSensor("Pivot", "pivotEncoder", pivotpivotEncoder);
-        pivotpivotEncoder.setDistancePerPulse(1.0);
-        pivotpivotEncoder.setPIDSourceType(PIDSourceType.kRate);
+        pivotpivotEncoder.setDistancePerPulse(360.0/8192);
+        pivotpivotEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
         climberclimbMotor = new Talon(9);
         LiveWindow.addActuator("Climber", "climbMotor", (Talon) climberclimbMotor);
         
