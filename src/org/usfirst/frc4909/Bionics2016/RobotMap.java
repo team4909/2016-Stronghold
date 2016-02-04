@@ -105,7 +105,7 @@ public class RobotMap {
         LiveWindow.addSensor("Shooter", "rightShootEncoder", shooterrightShootEncoder);
         shooterrightShootEncoder.setDistancePerPulse(1.0);
         shooterrightShootEncoder.setPIDSourceType(PIDSourceType.kRate);
-        feederfeedAxle = new Spark(4);//should be 5
+        feederfeedAxle = new Spark(5);//should be 5
         LiveWindow.addActuator("Feeder", "feedAxle", (Spark) feederfeedAxle);
         
         feederfeedSwitch = new DigitalInput(0);
@@ -119,7 +119,7 @@ public class RobotMap {
         //LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
         
         
-        pivotpivotControl = new Spark(5);
+        pivotpivotControl = new Spark(4);
         LiveWindow.addActuator("Pivot", "pivotControl", (Spark) pivotpivotControl);
         
         
