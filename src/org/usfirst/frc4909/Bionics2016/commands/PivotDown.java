@@ -14,30 +14,37 @@ public class PivotDown extends Command {
 	protected void initialize() {
 		//Robot.pivot.disable();
 		// TODO Auto-generated method stub
-		
+		Robot.pivot.movePivot(0.5);
+
 	}
 
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.pivot.movePivot(0.5);
+		
+		
+		//Robot.pivot.pivotControl.set(.5);
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return !Robot.oi.pivotDownButton.get();
 	}
 
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
+		
 		Robot.pivot.movePivot(0.0);
+
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
+		Robot.pivot.movePivot(0.0);
+
 
 	}
 

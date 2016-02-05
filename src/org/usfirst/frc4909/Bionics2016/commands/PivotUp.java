@@ -11,6 +11,8 @@ public class PivotUp extends Command {
 
 	@Override
 	protected void initialize() {
+		Robot.pivot.movePivot(-0.5);
+
 		//Robot.pivot.disable();
 		// TODO Auto-generated method stub
 
@@ -19,13 +21,13 @@ public class PivotUp extends Command {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.pivot.movePivot(-0.5);
+
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return !Robot.oi.pivotUpButton.get();
 	}
 
 	@Override
@@ -37,6 +39,7 @@ public class PivotUp extends Command {
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
+		Robot.pivot.movePivot(0.0);
 
 	}
 

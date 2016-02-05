@@ -108,11 +108,11 @@ public class RobotMap {
         feederfeedAxle = new Spark(5);//should be 5
         LiveWindow.addActuator("Feeder", "feedAxle", (Spark) feederfeedAxle);
         
-        feederfeedSwitch = new DigitalInput(0);
+        feederfeedSwitch = new DigitalInput(13);
         LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
         
         
-        pivotTopSwitch= new DigitalInput(13);
+        pivotTopSwitch= new DigitalInput(0);
         //LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
         
         pivotBottomSwitch = new DigitalInput(14);
