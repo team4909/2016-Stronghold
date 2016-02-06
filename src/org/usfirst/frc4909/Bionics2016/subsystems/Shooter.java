@@ -61,7 +61,7 @@ public class Shooter extends Subsystem {
     	shooterRightWheel.set(-setpoint);
     }
     
-    public void makeRPMSame(){
+    public void setShooterWheelsSameRPM(){
     	/*
     	while(Math.abs(getLeftRPM())>Math.abs(getRightRPM()))
     	{
@@ -89,8 +89,6 @@ public class Shooter extends Subsystem {
     		}    	    	
     	}
     */
-    	
-    	
     	
     }
     
