@@ -38,14 +38,18 @@ public class ControlPivot extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.pivot.setPIDEnable(true);
+    	//Robot.pivot.setPIDEnable(true);
+    	Robot.pivot.setPIDEnable(false);
+
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.pivot.movePivot(Robot.oi.getLeftOperator());
     	//System.out.println("Control");
     	//Robot.pivot.movePivot(1.0);
-    	Robot.pivot.setAngle((-Robot.oi.operatorControl.getRawAxis(3) + 1) * 180);
+    	//Robot.pivot.setAngle((-Robot.oi.operatorControl.getRawAxis(3) + 1) * 180);
 
 //    	Robot.pivot.usePIDOutput(Robot.pivot.returnPIDInput());
     }
