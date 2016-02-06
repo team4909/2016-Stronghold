@@ -11,8 +11,7 @@ public class PivotUp extends Command {
 
 	@Override
 	protected void initialize() {
-		Robot.pivot.movePivot(-0.5);
-
+		Robot.pivot.setPIDEnable(true);
 		//Robot.pivot.disable();
 		// TODO Auto-generated method stub
 
@@ -20,26 +19,33 @@ public class PivotUp extends Command {
 
 	@Override
 	protected void execute() {
+		//Robot.pivot.movePivot(-0.5);
+		Robot.pivot.setAngle(45);
 		// TODO Auto-generated method stub
-
+		Robot.pivot.usePIDOutput(Robot.pivot.returnPIDInput());
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return !Robot.oi.pivotUpButton.get();
+		//return !Robot.oi.pivotUpButton.get();
+		return false; //Robot.pivot.onTarget();
+
 	}
 
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		Robot.pivot.movePivot(0.0);
+		//Robot.pivot.movePivot(0.0);
+		Robot.pivot.setPIDEnable(false);
+
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-		Robot.pivot.movePivot(0.0);
+		//Robot.pivot.movePivot(0.0);
+		Robot.pivot.setPIDEnable(false);
 
 	}
 

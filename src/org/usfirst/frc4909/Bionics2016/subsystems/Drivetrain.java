@@ -76,8 +76,9 @@ public class Drivetrain extends Subsystem {
     			driveControl.tankDrive(pow, pow-rotCorrection);
     		}
     	}*/
-    		
-    	driveControl.tankDrive(left, right);
+    	driveControl.arcadeDrive(left,Robot.oi.controlDrive.getX()*-.75);
+	
+    	//driveControl.tankDrive(left, right);
     }
     		
 
@@ -92,6 +93,7 @@ public class Drivetrain extends Subsystem {
 
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new Drive()); //this was added
     }
 }
 

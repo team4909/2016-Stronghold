@@ -42,7 +42,7 @@ public class Climb extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.climber.climbMotor.set(Robot.oi.operatorControl.getY());
+    	Robot.climber.climbMotor.set(Robot.oi.operatorControl.getRawAxis(3));
     }
 
     // Make this return true when this Command no longer needs to run execute()

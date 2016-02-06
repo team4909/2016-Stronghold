@@ -80,7 +80,7 @@ public class RobotMap {
         drivetraindriveControl.setSensitivity(0.5);
         drivetraindriveControl.setMaxOutput(1.0);
 
-        drivetrainleftDriveEncoder = new Encoder(3, 4, false, EncodingType.k4X);
+        drivetrainleftDriveEncoder = new Encoder(11, 12, false, EncodingType.k4X);
         LiveWindow.addSensor("Drivetrain", "leftDriveEncoder", drivetrainleftDriveEncoder);
         drivetrainleftDriveEncoder.setDistancePerPulse(1.0);
         drivetrainleftDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
@@ -99,11 +99,11 @@ public class RobotMap {
         
         shooterleftShootEncoder = new Encoder(7, 8, false, EncodingType.k4X);
         LiveWindow.addSensor("Shooter", "leftShootEncoder", shooterleftShootEncoder);
-        shooterleftShootEncoder.setDistancePerPulse(1.0);
+        shooterleftShootEncoder.setDistancePerPulse(1/8192);
         shooterleftShootEncoder.setPIDSourceType(PIDSourceType.kRate);
-        shooterrightShootEncoder = new Encoder(9, 10, false, EncodingType.k4X);
+        shooterrightShootEncoder = new Encoder(9, 10, true, EncodingType.k4X);
         LiveWindow.addSensor("Shooter", "rightShootEncoder", shooterrightShootEncoder);
-        shooterrightShootEncoder.setDistancePerPulse(1.0);
+        shooterrightShootEncoder.setDistancePerPulse(1/8192);
         shooterrightShootEncoder.setPIDSourceType(PIDSourceType.kRate);
         feederfeedAxle = new Spark(5);//should be 5
         LiveWindow.addActuator("Feeder", "feedAxle", (Spark) feederfeedAxle);
@@ -112,25 +112,25 @@ public class RobotMap {
         LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
         
         
-        pivotTopSwitch= new DigitalInput(0);
+        pivotTopSwitch= new DigitalInput(1);
         //LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
         
-        pivotBottomSwitch = new DigitalInput(14);
+        pivotBottomSwitch = new DigitalInput(2);
         //LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
         
         
-        pivotpivotControl = new Spark(4);
+        pivotpivotControl = new Spark(9);
         LiveWindow.addActuator("Pivot", "pivotControl", (Spark) pivotpivotControl);
         
         
-        pivotpivotEncoder = new Encoder(1, 2, false, EncodingType.k4X);
+        pivotpivotEncoder = new Encoder(3, 4, true, EncodingType.k4X);
         LiveWindow.addSensor("Pivot", "pivotEncoder", pivotpivotEncoder);
         pivotpivotEncoder.setDistancePerPulse(360.0/8192);
         pivotpivotEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
-        climberclimbMotor = new Spark(9);
+        climberclimbMotor = new Spark(7);
         LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbMotor);
         
-        climberclimbEncoder = new Encoder(11, 12, false, EncodingType.k4X);
+        climberclimbEncoder = new Encoder(14, 15, false, EncodingType.k4X);
         LiveWindow.addSensor("Climber", "climbEncoder", climberclimbEncoder);
         climberclimbEncoder.setDistancePerPulse(1.0);
         climberclimbEncoder.setPIDSourceType(PIDSourceType.kRate);

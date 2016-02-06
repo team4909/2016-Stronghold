@@ -49,15 +49,8 @@ public class Shoot extends Command {
 	}
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-    	if(time>=3.0)
-    	{
-    		return true;
-    	}
-    	else
-    	{
-    		return false;
-    	}
+    protected boolean isFinished() { //this was changed
+    	return time>=3.0;
     }
 
     // Called once after isFinished returns true

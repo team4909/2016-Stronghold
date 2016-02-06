@@ -34,7 +34,7 @@ public class Pivot extends PIDSubsystem {
 
     public Pivot(String name, double p, double i, double d) {
 		super(name, p, i, d);
-		this.setAbsoluteTolerance(50);
+		this.setAbsoluteTolerance(10);
 		getPIDController().setContinuous(false);
 		LiveWindow.addActuator("Pivot", "PIDSubsystem Controller", getPIDController());
 		
@@ -91,10 +91,11 @@ public class Pivot extends PIDSubsystem {
     }
     public void movePivot(double speed)
     {
-    	if(speed > 0 && !getBottomSwitch())
-    		return;
-    	if(speed < 0 && getTopSwitch())
-    		return;
+    	speed=-speed;
+    	if(speed < 0 && getBottomSwitch())
+    		speed=0;
+    	if(speed > 0 && getTopSwitch())
+    		speed=0;
     	pivotControl.set(speed);
     }
     public void setPIDEnable(boolean isEnabled) {
@@ -113,7 +114,7 @@ public class Pivot extends PIDSubsystem {
 	@Override
 	public void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		if((output < 0 && !getBottomSwitch()) || (output > 0 && getTopSwitch()) || this.onTarget()) 
+		if((output < 0 && getBottomSwitch()) || (output > 0 && getTopSwitch()) || this.onTarget())
 		{
 			output = 0;
 		
