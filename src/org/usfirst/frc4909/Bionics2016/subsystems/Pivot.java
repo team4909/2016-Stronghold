@@ -87,7 +87,7 @@ public class Pivot extends PIDSubsystem {
     }
     public boolean getBottomSwitch()
     {
-    	return pivotBottomSwitch.get();
+    	return pivotBottomSwitch.get();//MORE CODE!!!!!!!!!!!!!!!!!
     }
     public void movePivot(double speed)
     {
@@ -100,7 +100,7 @@ public class Pivot extends PIDSubsystem {
     public void setPIDEnable(boolean isEnabled) {
     	if (isEnabled) {
     		enable();
-    	} else {
+    	} else {//CODE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     		disable();
     	}
     }
@@ -113,7 +113,7 @@ public class Pivot extends PIDSubsystem {
 	@Override
 	public void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		if((output < 0 && !getBottomSwitch()) || (output > 0 && getTopSwitch()) || this.onTarget()) 
+		if((output < 0 && !getBottomSwitch()) || (output > 0 && getTopSwitch()) || this.onTarget()) //EVEN MORE CODE!!!!!!!!!!
 		{
 			output = 0;
 		
