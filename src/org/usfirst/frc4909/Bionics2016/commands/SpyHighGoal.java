@@ -2,44 +2,41 @@ package org.usfirst.frc4909.Bionics2016.commands;
 
 import org.usfirst.frc4909.Bionics2016.Robot;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class SpyHighGoal extends Command {
+/**
+ *
+ */
+public class SpyHighGoal extends CommandGroup {
+    
+    public  SpyHighGoal() {
+    	
+        requires(Robot.drivetrain);
+        requires(Robot.pivot);
+        requires(Robot.shooter);
+        requires(Robot.feeder);
+        
+        // Add Commands here:
+    	addParallel(new CrossDefence()); //MAKE CORRECT TIME!!!
+    	addSequential(new autoTowerFromDefence()); //MAKE IT WORK!!!
+    	addParallel(new autoSetShooterAngle(20)); //MAKE CORRECT ANGLE!!!!
+    	addSequential(new Shoot());
+        
+        
+        // e.g. addSequential(new Command1());
+        //      addSequential(new Command2());
+        // these will run in order.
 
-	public SpyHighGoal() {
-		 requires(Robot.drivetrain);
-	        requires(Robot.shooter);
-	        requires(Robot.pivot);
-	        requires(Robot.feeder);
-	}
-	@Override
-	protected void initialize() {
-		// TODO Auto-generated method stub
+        // To run multiple commands at the same time,
+        // use addParallel()
+        // e.g. addParallel(new Command1());
+        //      addSequential(new Command2());
+        // Command1 and Command2 will run in parallel.
 
-	}
-
-	@Override
-	protected void execute() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	protected void end() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void interrupted() {
-		// TODO Auto-generated method stub
-
-	}
-
+        // A command group will require all of the subsystems that each member
+        // would require.
+        // e.g. if Command1 requires chassis, and Command2 requires arm,
+        // a CommandGroup containing them would require both the chassis and the
+        // arm.
+    }
 }

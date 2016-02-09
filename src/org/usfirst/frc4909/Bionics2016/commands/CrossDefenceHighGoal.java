@@ -1,21 +1,28 @@
 package org.usfirst.frc4909.Bionics2016.commands;
 
+import org.usfirst.frc4909.Bionics2016.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class SpyLowGoal extends CommandGroup {
+public class CrossDefenceHighGoal extends CommandGroup {
     
-    public  SpyLowGoal() {
-        // Add Commands here:
+    public  CrossDefenceHighGoal() {
     	
-    	addParallel(new autoSpyToTower()); //make it have right time
-    	addParallel(new autoSetShooterAngle(85)); //MAKE CORRECT ANGLE!!!
-    	addParallel(new StartShooter(1000));
+        requires(Robot.drivetrain);
+        requires(Robot.pivot);
+        requires(Robot.shooter);
+        requires(Robot.feeder);
+        
+        addParallel(new CrossDefence()); //based on time, update to be real time
+    	//make it line up using vision
+    	addParallel(new autoSetShooterAngle(30)); //make correct angle
     	addSequential(new Shoot());
     	
     	
+        // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
