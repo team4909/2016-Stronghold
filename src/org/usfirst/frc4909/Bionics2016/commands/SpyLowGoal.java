@@ -2,6 +2,7 @@ package org.usfirst.frc4909.Bionics2016.commands;
 
 import org.usfirst.frc4909.Bionics2016.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class SpyLowGoal extends Command {
@@ -22,6 +23,10 @@ public class SpyLowGoal extends Command {
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
+		//while(){
+
+			
+		//}
 
 	}
 
@@ -34,7 +39,7 @@ public class SpyLowGoal extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

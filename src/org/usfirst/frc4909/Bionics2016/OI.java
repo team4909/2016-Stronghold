@@ -132,11 +132,11 @@ public class OI {
         return rightDrive;
     }
     public double getLeft(){
-    	return -controlDrive.getY();
+    	return controlDrive.getY();
     	
     }
     public double getRight(){
-    	return -rightDrive.getY();
+    	return rightDrive.getY();
     	
     }
     
