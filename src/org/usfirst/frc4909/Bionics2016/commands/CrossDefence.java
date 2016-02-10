@@ -19,7 +19,7 @@ public class CrossDefence extends Command {
 	protected void initialize() {
 		// TODO Auto-generated method stub
 		//Robot.drivetrain.resetGyro();
-        while (Timer.getMatchTime()<time) {
+        while (Timer.getFPGATimestamp()<time) {
             double angle = 0;//Robot.drivetrain.getGyroAngle(); // get current heading
             Robot.drivetrain.autoDrive(-1.0, angle*Kp); // drive towards heading 0
             Timer.delay(0.004);
