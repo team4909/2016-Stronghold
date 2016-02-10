@@ -17,10 +17,13 @@ public class SpyHighGoal extends CommandGroup {
         requires(Robot.feeder);
         
         // Add Commands here:
-    	addParallel(new CrossDefence()); //MAKE CORRECT TIME!!!
-    	addSequential(new autoTowerFromDefence()); //MAKE IT WORK!!!
+    	addParallel(new autoTowerFromDefence()); //MAKE IT WORK!!!
     	addParallel(new autoSetShooterAngle(20)); //MAKE CORRECT ANGLE!!!!
+    	addParallel(new StartShooter(5000)); //Check RPM
     	addSequential(new Shoot());
+    	
+    	//Possibility of using the line up methods (ultrasonics and vision) in auto... 
+    	//for now assuming that we are not as those are not yet written
         
         
         // e.g. addSequential(new Command1());

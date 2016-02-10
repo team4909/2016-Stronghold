@@ -22,7 +22,13 @@ public class CrossDefenceLowGoal extends CommandGroup {
     	addParallel(new CrossDefence()); //MAKE CORRECT TIME!!!
     	addSequential(new autoTowerFromDefence()); //MAKE IT WORK!!!
     	addParallel(new autoSetShooterAngle(85.0));
+    	addParallel(new StartShooter(1000)); //Check this RPM
     	addSequential(new Shoot());
+    	
+    	//Possibility of using the line up methods (ultrasonics and vision) in auto... 
+    	//for now assuming that we are not as those are not yet written
+    	
+    	
     	
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

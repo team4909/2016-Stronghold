@@ -12,8 +12,11 @@ public class SpyLowGoal extends CommandGroup {
     	
     	addParallel(new autoSpyToTower()); //make it have right time
     	addParallel(new autoSetShooterAngle(85)); //MAKE CORRECT ANGLE!!!
-    	addParallel(new StartShooter(1000));
+    	addParallel(new StartShooter(1000)); //Check RPM
     	addSequential(new Shoot());
+    	
+    	//Possibility of using the line up methods (ultrasonics and vision) in auto... 
+    	//for now assuming that we are not as those are not yet written
     	
     	
         // e.g. addSequential(new Command1());

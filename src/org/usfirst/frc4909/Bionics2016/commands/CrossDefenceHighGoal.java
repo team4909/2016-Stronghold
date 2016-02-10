@@ -16,10 +16,13 @@ public class CrossDefenceHighGoal extends CommandGroup {
         requires(Robot.shooter);
         requires(Robot.feeder);
         
-        addParallel(new CrossDefence()); //based on time, update to be real time
-    	//make it line up using vision
+        addParallel(new CrossDefence()); //based on time, update to be real time or distance
     	addParallel(new autoSetShooterAngle(30)); //make correct angle
+    	addParallel(new StartShooter(5000)); //Check this RPM
     	addSequential(new Shoot());
+    	
+    	//Possibility of using the line up methods (ultrasonics and vision) in auto... 
+    	//for now assuming that we are not as those are not yet written
     	
     	
         // Add Commands here:
