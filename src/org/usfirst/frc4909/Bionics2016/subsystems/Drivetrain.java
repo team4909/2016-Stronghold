@@ -82,11 +82,9 @@ public class Drivetrain extends Subsystem {
 	
     	driveControl.tankDrive(left, right);
     }
-    		
-
+    
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
     
     public void autoDrive(double magnitude, double curve)
     {

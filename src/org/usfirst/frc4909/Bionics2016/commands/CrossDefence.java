@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class CrossDefence extends Command {
 	private double Kp = 0.03;
-	private double time=1; //SET TO REAL TIME!!!!!
+	private double startTime; //SET TO REAL TIME!!!!!
 	
 	public CrossDefence() {
 		// TODO Auto-generated constructor stub
@@ -17,12 +17,19 @@ public class CrossDefence extends Command {
 
 	@Override
 	protected void initialize() {
+		startTime=Timer.getFPGATimestamp();
 		// TODO Auto-generated method stub
-		//Robot.drivetrain.resetGyro();
-        while (Timer.getFPGATimestamp()<time) {
-            double angle = 0;//Robot.drivetrain.getGyroAngle(); // get current heading
-            Robot.drivetrain.autoDrive(-1.0, angle*Kp); // drive towards heading 0
+		Robot.drivetrain.resetGyro();
+        double angle; // get current heading
+
+        while (Timer.getFPGATimestamp()-startTime<2) {
+            angle = Robot.drivetrain.getGyroAngle(); // get current heading
+            Robot.drivetrain.autoDrive(-.5, -angle*Kp); // drive towards heading 0
             Timer.delay(0.004);
+        }
+        while(Math.abs(Robot.drivetrain.getGyroAngle())>5){
+        	angle = Robot.drivetrain.getGyroAngle();
+            Robot.drivetrain.autoDrive(0, -angle*Kp); // drive towards heading 0
         }
 	}
 
