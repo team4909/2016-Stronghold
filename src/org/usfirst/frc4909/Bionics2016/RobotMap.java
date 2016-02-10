@@ -133,8 +133,8 @@ public class RobotMap {
         drivetrainrightDriveEncoder.setDistancePerPulse(1.0);
         drivetrainrightDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
         
-        drivetraingyro = new ADXRS450_Gyro();//maybe change port number as an argument
-        LiveWindow.addSensor("Drivetrain", "gyro", drivetraingyro);
+        //drivetraingyro = new ADXRS450_Gyro();//maybe change port number as an argument
+        //LiveWindow.addSensor("Drivetrain", "gyro", drivetraingyro);
         //drivetraingyro.setSensitivity(0.007);
         
         drivetrainaccelerometer = new ADXL362(Range.k8G); //add port number
