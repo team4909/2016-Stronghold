@@ -21,7 +21,6 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -134,12 +133,12 @@ public class RobotMap {
         drivetrainrightDriveEncoder.setDistancePerPulse(1.0);
         drivetrainrightDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
         
-        drivetraingyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
-        LiveWindow.addSensor("Drivetrain", "gyro", drivetraingyro);
+        //drivetraingyro = new ADXRS450_Gyro();//maybe change port number as an argument
+        //LiveWindow.addSensor("Drivetrain", "gyro", drivetraingyro);
         //drivetraingyro.setSensitivity(0.007);
         
         drivetrainaccelerometer = new ADXL362(Range.k8G); //add port number
-        LiveWindow.addSensor("Drivetrain", "accelerometer", drivetrainaccelerometer);
+        
         
         //Shooter
         //Shooter Motors
