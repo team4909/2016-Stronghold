@@ -21,7 +21,7 @@ public class autoSpyToTower extends Command {
 	// Called just before this Command runs the first time
     protected void initialize() {
     	Robot.drivetrain.resetGyro();
-        while (Timer.getMatchTime()<time) {
+        while (Timer.getFPGATimestamp()<time) {
             double angle = Robot.drivetrain.getGyroAngle(); // get current heading
             Robot.drivetrain.autoDrive(1.0, angle*Kp); // drive towards heading 0
             Timer.delay(0.004);

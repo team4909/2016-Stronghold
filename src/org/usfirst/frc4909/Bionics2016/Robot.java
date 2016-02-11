@@ -154,6 +154,9 @@ public class Robot extends IterativeRobot {
         /** robot code here! **/
         //Timer.delay(0.005);		// wait for a motor update time
         
+        SmartDashboard.putNumber("left encoder", this.shooter.getLeftRPM());
+        SmartDashboard.putNumber("right encoder", this.shooter.getRightRPM());
+        
     }
 
     /**
