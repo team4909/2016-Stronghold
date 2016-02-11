@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class CrossDefence extends Command {
-	private double Kp = 0.03;
+	private double Kp = 0.1; //0.03;
 	private double startTime; //SET TO REAL TIME!!!!!
 	
 	public CrossDefence() {

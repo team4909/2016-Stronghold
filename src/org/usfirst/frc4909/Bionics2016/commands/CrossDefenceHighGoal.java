@@ -18,7 +18,7 @@ public class CrossDefenceHighGoal extends CommandGroup {
         
         addParallel(new CrossDefence()); //based on time, update to be real time or distance
     	addParallel(new autoSetShooterAngle(30)); //make correct angle
-    	addParallel(new StartShooter(5000)); //Check this RPM
+    	addSequential(new StartShooter(5000)); //Check this RPM
     	addSequential(new Shoot());
     	
     	//Possibility of using the line up methods (ultrasonics and vision) in auto... 

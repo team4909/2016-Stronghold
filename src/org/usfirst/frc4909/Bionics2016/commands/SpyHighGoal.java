@@ -19,7 +19,7 @@ public class SpyHighGoal extends CommandGroup {
         // Add Commands here:
     	addParallel(new autoTowerFromDefence()); //MAKE IT WORK!!!
     	addParallel(new autoSetShooterAngle(20)); //MAKE CORRECT ANGLE!!!!
-    	addParallel(new StartShooter(5000)); //Check RPM
+    	addSequential(new StartShooter(5000)); //Check RPM
     	addSequential(new Shoot());
     	
     	//Possibility of using the line up methods (ultrasonics and vision) in auto... 
