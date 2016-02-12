@@ -108,6 +108,8 @@ public class Robot extends IterativeRobot {
 
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
+        SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
     }
 
     public void autonomousInit() {
@@ -154,8 +156,10 @@ public class Robot extends IterativeRobot {
         /** robot code here! **/
         //Timer.delay(0.005);		// wait for a motor update time
         
-        SmartDashboard.putNumber("left encoder", this.shooter.getLeftRPM());
-        SmartDashboard.putNumber("right encoder", this.shooter.getRightRPM());
+        SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
+        SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
+        SmartDashboard.putNumber("Test", RobotMap.shooterleftShootEncoder.getRaw());
+        
         
     }
 

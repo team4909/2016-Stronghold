@@ -44,17 +44,19 @@ public class Drive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	/*
     	try {
 			fw = new FileWriter("/home/lvuser/AccelXYZAndGyro.csv");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	/*
     	String out = Timer.getFPGATimestamp()+","+Double.toString(Robot.drivetrain.getAccelX())+","+Double.toString(Robot.drivetrain.getAccelY())+","+Double.toString(Robot.drivetrain.getAccelZ())+ "," + Double.toString(Robot.drivetrain.getGyroAngle());
     	try {
 			fw.write(out);
@@ -64,7 +66,7 @@ public class Drive extends Command {
 			e.printStackTrace();
 		}
     	
-    
+    `*/
     	Robot.drivetrain.moveRobot(Robot.oi.getLeft(), Robot.oi.getRight());
     }
 
@@ -75,24 +77,28 @@ public class Drive extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	/*
     	try {
 			fw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	/*
     	try {
 			fw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 
     }
 }

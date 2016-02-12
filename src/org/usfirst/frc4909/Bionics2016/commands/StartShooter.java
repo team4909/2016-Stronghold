@@ -12,6 +12,8 @@
 package org.usfirst.frc4909.Bionics2016.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc4909.Bionics2016.Robot;
 
 /**
@@ -48,6 +50,10 @@ public class StartShooter extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.shooter.setShooterRPM(targetRPM);
+        SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
+        SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
+        System.out.println(Robot.shooter.getRightRPM());
+        System.out.println(Robot.shooter.getLeftRPM());
     }
 
     // Make this return true when this Command no longer needs to run execute()

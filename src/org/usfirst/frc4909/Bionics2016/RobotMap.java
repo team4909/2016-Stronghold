@@ -128,7 +128,7 @@ public class RobotMap {
         drivetrainleftDriveEncoder.setDistancePerPulse(1.0);
         drivetrainleftDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
         
-        drivetrainrightDriveEncoder = new Encoder(5, 6, false, EncodingType.k4X);
+        drivetrainrightDriveEncoder = new Encoder(5, 0, false, EncodingType.k4X);
         LiveWindow.addSensor("Drivetrain", "rightDriveEncoder", drivetrainrightDriveEncoder);
         drivetrainrightDriveEncoder.setDistancePerPulse(1.0);
         drivetrainrightDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
@@ -149,14 +149,14 @@ public class RobotMap {
         LiveWindow.addActuator("Shooter", "shooterRightWheel", (Spark) shootershooterRightWheel);
         
         //Shooter Sensors
-        shooterleftShootEncoder = new Encoder(7, 8, false, EncodingType.k4X);
+        shooterleftShootEncoder = new Encoder(6, 7, false, EncodingType.k4X);
         LiveWindow.addSensor("Shooter", "leftShootEncoder", shooterleftShootEncoder);
-        shooterleftShootEncoder.setDistancePerPulse(1/8192);
+        shooterleftShootEncoder.setDistancePerPulse(1/1024);
         shooterleftShootEncoder.setPIDSourceType(PIDSourceType.kRate);
         
-        shooterrightShootEncoder = new Encoder(9, 10, true, EncodingType.k4X);
+        shooterrightShootEncoder = new Encoder(8, 9, true, EncodingType.k4X);
         LiveWindow.addSensor("Shooter", "rightShootEncoder", shooterrightShootEncoder);
-        shooterrightShootEncoder.setDistancePerPulse(1/8192);
+        shooterrightShootEncoder.setDistancePerPulse(1/1024);
         shooterrightShootEncoder.setPIDSourceType(PIDSourceType.kRate);
         
         
