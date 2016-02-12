@@ -83,6 +83,7 @@ public class Robot extends IterativeRobot {
         autoChooser.addDefault("Spy Low Goal", new SpyLowGoal());
         autoChooser.addObject("Spy High Goal", new SpyHighGoal());
         autoChooser.addObject("Defence Cross", new CrossDefence());
+        SmartDashboard.putData("Autonomous Mode Chooser",autoChooser);
         //autoChooser.addObject("Experimental: Cross Defence, Score Low Goal", new CrossLowGoal());
         //autoChooser.addObject("Experimental: Cross Defence,, Score High Goal", new ());
         //autoChooser.addObject("Experimental!!: Start as Spy, Score High Goal, Cross a Defence", new ());
@@ -102,14 +103,16 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
         NIVision.IMAQdxStopAcquisition(session);    
-
-
     }
 
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
         SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
         SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
+        
+        SmartDashboard.putNumber("Accellerometer X",RobotMap.drivetrainaccelerometer.getX());
+        SmartDashboard.putNumber("Accellerometer Y",RobotMap.drivetrainaccelerometer.getY());
+        SmartDashboard.putNumber("Accellerometer Z",RobotMap.drivetrainaccelerometer.getZ());
     }
 
     public void autonomousInit() {
@@ -160,7 +163,9 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
         SmartDashboard.putNumber("Test", RobotMap.shooterleftShootEncoder.getRaw());
         
-        
+        SmartDashboard.putNumber("Accellerometer X",RobotMap.drivetrainaccelerometer.getX());
+        SmartDashboard.putNumber("Accellerometer Y",RobotMap.drivetrainaccelerometer.getY());
+        SmartDashboard.putNumber("Accellerometer Z",RobotMap.drivetrainaccelerometer.getZ());
     }
 
     /**
