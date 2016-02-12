@@ -110,9 +110,9 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
         SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
         
-        SmartDashboard.putNumber("Accellerometer X",RobotMap.drivetrainaccelerometer.getX());
-        SmartDashboard.putNumber("Accellerometer Y",RobotMap.drivetrainaccelerometer.getY());
-        SmartDashboard.putNumber("Accellerometer Z",RobotMap.drivetrainaccelerometer.getZ());
+        SmartDashboard.putNumber("Accellerometer X",Robot.drivetrain.getAccelX());
+        SmartDashboard.putNumber("Accellerometer Y",Robot.drivetrain.getAccelY());
+        SmartDashboard.putNumber("Accellerometer Z",Robot.drivetrain.getAccelZ());
     }
 
     public void autonomousInit() {
