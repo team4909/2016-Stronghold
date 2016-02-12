@@ -47,15 +47,15 @@ public class Shooter extends Subsystem {
     
     public double getLeftRPM()
     {
-    	//return 60*leftShootEncoder.getRate();
-    	return Math.abs(60/(ENCODER_RES*leftShootEncoder.getPeriod()));
+    	return 60*leftShootEncoder.getRate();
+    	//return Math.abs(60/(ENCODER_RES*leftShootEncoder.getPeriod()));
     	//return leftShootEncoder.getRaw();
     }
     
     public double getRightRPM()
     {
-    	return Math.abs(60/(ENCODER_RES*rightShootEncoder.getPeriod()));
-    	//return 60*rightShootEncoder.getRate();
+    	//return Math.abs(60/(ENCODER_RES*rightShootEncoder.getPeriod()));
+    	return 60*rightShootEncoder.getRate();
     	//return rightShootEncoder.getRaw();
     }
     
@@ -98,7 +98,7 @@ public class Shooter extends Subsystem {
     public void setShooterRPM(double targetRPM){
     	//if (getLeftRPM() > targetRPM) shooterLeftWheel.set(0);
     	//else shooterLeftWheel.set(1);
-    	if (getRightRPM() > targetRPM) shooterRightWheel.set(0);
+    	if (getRightRPM() > targetRPM) shooterRightWheel.set(targetRPM/5000);
     	else shooterRightWheel.set(1);
     }
     public double getLeftRate() {
