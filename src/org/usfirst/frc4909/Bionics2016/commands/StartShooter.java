@@ -49,11 +49,15 @@ public class StartShooter extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	targetRPM=((-Robot.oi.operatorControl.getRawAxis(3)+1)*2500);
+    	//Robot.shooter.useLeftRate(targetRPM);
+    	//Robot.shooter.useRightRate(targetRPM);
     	Robot.shooter.setShooterRPM(targetRPM);
+        SmartDashboard.putNumber("Target RPM", targetRPM);
         SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
         SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
-        System.out.println(Robot.shooter.getRightRPM());
-        System.out.println(Robot.shooter.getLeftRPM());
+       // System.out.println(Robot.shooter.getRightRPM());
+     //   System.out.println(Robot.shooter.getLeftRPM());
     }
 
     // Make this return true when this Command no longer needs to run execute()

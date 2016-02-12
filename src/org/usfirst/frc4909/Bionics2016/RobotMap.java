@@ -151,14 +151,14 @@ public class RobotMap {
         //Shooter Sensors
         shooterleftShootEncoder = new Encoder(6, 7, false, EncodingType.k4X);
         LiveWindow.addSensor("Shooter", "leftShootEncoder", shooterleftShootEncoder);
-        shooterleftShootEncoder.setDistancePerPulse(1/1024);
+        shooterleftShootEncoder.setDistancePerPulse(1.0/4096);
         shooterleftShootEncoder.setPIDSourceType(PIDSourceType.kRate);
         
-        shooterrightShootEncoder = new Encoder(8, 9, true, EncodingType.k4X);
+        shooterrightShootEncoder = new Encoder(8, 9, false, EncodingType.k4X);
         LiveWindow.addSensor("Shooter", "rightShootEncoder", shooterrightShootEncoder);
-        shooterrightShootEncoder.setDistancePerPulse(1/1024);
+        shooterrightShootEncoder.setDistancePerPulse(1.0);
         shooterrightShootEncoder.setPIDSourceType(PIDSourceType.kRate);
-        
+        shooterrightShootEncoder.setSamplesToAverage(50);
         
         //Feeder
         //Feeder Motor
