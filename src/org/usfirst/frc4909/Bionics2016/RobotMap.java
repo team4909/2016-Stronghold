@@ -182,9 +182,9 @@ public class RobotMap {
         pivotBottomSwitch = new DigitalInput(2);
         LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
         
-        pivotpivotEncoder = new Encoder(3, 4, true, EncodingType.k4X);
+        pivotpivotEncoder = new Encoder(3, 4, false, EncodingType.k4X);
         LiveWindow.addSensor("Pivot", "pivotEncoder", pivotpivotEncoder);
-        pivotpivotEncoder.setDistancePerPulse(360.0/8192);
+        pivotpivotEncoder.setDistancePerPulse(360.0/2048);
         pivotpivotEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
         
         
