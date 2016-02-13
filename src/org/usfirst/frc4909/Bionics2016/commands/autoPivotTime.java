@@ -8,37 +8,33 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class autoSpyToTower extends Command {
-	private double time=0; //SET TO REAL TIME!!!!!
-	private double Kp = 0.03;
-	
-    public autoSpyToTower() {
+public class autoPivotTime extends Command {
+
+	private double time=Timer.getFPGATimestamp();
+    public autoPivotTime(double t) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drivetrain);
+    	requires(Robot.pivot);
+    	time=time+t;
     }
 
-	// Called just before this Command runs the first time
+    // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.resetGyro();
-        while (Timer.getFPGATimestamp()<time) {
-            double angle = Robot.drivetrain.getGyroAngle(); // get current heading
-            Robot.drivetrain.autoDrive(1.0, angle*Kp); // drive towards heading 0
-            Timer.delay(0.004);
-        }
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.pivot.pivotDown();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Timer.getFPGATimestamp()>time;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.pivot.movePivot(0);
     }
 
     // Called when another command which requires one or more of the same

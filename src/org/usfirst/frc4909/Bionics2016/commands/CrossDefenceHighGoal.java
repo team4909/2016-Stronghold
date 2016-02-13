@@ -16,7 +16,11 @@ public class CrossDefenceHighGoal extends CommandGroup {
         requires(Robot.shooter);
         requires(Robot.feeder);
         
-        addParallel(new CrossDefence()); //based on time, update to be real time or distance
+        //THIS IS NOT TO BE USED UNTIL A LATER DATE!
+
+        
+        addSequential(new CrossDefence()); //based on time, update to be real time or distance
+        addSequential(new autoMoveDistance(10));
     	addParallel(new autoSetShooterAngle(30)); //make correct angle
     	addSequential(new StartShooter(5000)); //Check this RPM
     	addSequential(new Shoot());

@@ -1,5 +1,7 @@
 package org.usfirst.frc4909.Bionics2016.commands;
 
+import org.usfirst.frc4909.Bionics2016.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -8,10 +10,16 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SpyLowGoal extends CommandGroup {
     
     public  SpyLowGoal() {
+        requires(Robot.drivetrain);
+        requires(Robot.pivot);
+        requires(Robot.shooter);
+        requires(Robot.feeder);
+        
         // Add Commands here:
     	
-    	addParallel(new autoSpyToTower()); //make it have right time
-    	addParallel(new autoSetShooterAngle(85)); //MAKE CORRECT ANGLE!!!
+    	addParallel(new autoMoveDistance(105)); //make it have right time
+    	//addParallel(new autoSetShooterAngle(85)); //MAKE CORRECT ANGLE!!!
+    	addParallel(new autoPivotTime(.3)); //for w/o encoder only
     	addSequential(new StartShooter(1000)); //Check RPM
     	addSequential(new Shoot());
     	

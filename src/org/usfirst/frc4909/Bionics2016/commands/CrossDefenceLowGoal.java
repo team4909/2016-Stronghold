@@ -19,8 +19,11 @@ public class CrossDefenceLowGoal extends CommandGroup {
     	
     	// Add Commands here:
     	
-    	addParallel(new CrossDefence()); //MAKE CORRECT TIME!!!
-    	addSequential(new autoTowerFromDefence()); //MAKE IT WORK!!!
+        
+        //Make cross defence use accelerometer
+        //THIS IS NOT TO BE USED UNTIL A LATER DATE!
+    	addSequential(new CrossDefence());
+    	addSequential(new autoMoveDistance(10));
     	addParallel(new autoSetShooterAngle(85.0));
     	addSequential(new StartShooter(1000)); //Check this RPM
     	addSequential(new Shoot());
