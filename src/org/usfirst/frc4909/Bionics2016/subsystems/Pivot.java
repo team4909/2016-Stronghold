@@ -119,7 +119,7 @@ public class Pivot extends PIDSubsystem {
 			output = 0;
 		
     	}
-		pivotControl.pidWrite(output/2);
+		pivotControl.pidWrite(output);
 	}
 }
 

@@ -38,7 +38,7 @@ public class Shoot extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.feeder.feedOut();
+    	Robot.feeder.push();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -48,12 +48,12 @@ public class Shoot extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() { //this was changed
-    	return timeSinceInitialized()>=.05;
+    	return timeSinceInitialized()>=.5;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-		Robot.feeder.stopFeed();
+		Robot.feeder.retract();
 		Robot.shooter.setShooterWheels(0);
     }
 
