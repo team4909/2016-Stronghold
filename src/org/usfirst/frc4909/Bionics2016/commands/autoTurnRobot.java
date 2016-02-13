@@ -2,54 +2,49 @@ package org.usfirst.frc4909.Bionics2016.commands;
 
 import org.usfirst.frc4909.Bionics2016.Robot;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class autoCrossDefenceAccel extends Command {
-	private double starttime = 0;
-	private double Kp = 0.03;
-	
-	private boolean LB;
-	
-    public autoCrossDefenceAccel(boolean isLowBar) {
+public class autoTurnRobot extends Command {
+	private double angle = 0;
+	private boolean dir = false;
+    public autoTurnRobot(double a, boolean isLeft) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drivetrain);
-    	LB=isLowBar;
+    	angle=a;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	double power;
-    	if(LB) power = 0.5;
-    	else power = 0.75;
-    	
-    	starttime=Timer.getFPGATimestamp();
     	Robot.drivetrain.resetGyro();
-    	
-    	while (Timer.getFPGATimestamp()-starttime < 2.0) {
-            double angle = Robot.drivetrain.getGyroAngle(); // get current heading
-            Robot.drivetrain.autoDrive(power, angle*Kp); // drive towards heading 0
-            Timer.delay(0.004);
-        }
+
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.autoDrive(1, 0);
+    	
+    	if(dir==true)
+    	{
+    		Robot.drivetrain.turnRobotLeft();
+    	}
+    	
+    	else
+    	{
+    		Robot.drivetrain.turnRobotRight();
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.drivetrain.accelFlat();
+        return Math.abs(Robot.drivetrain.getGyroAngle())>45;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.drivetrain.autoDrive(0, 0);
+    	Robot.drivetrain.moveRobot(0,0);
     }
 
     // Called when another command which requires one or more of the same

@@ -7,27 +7,25 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class autoCrossDefence extends CommandGroup {
+public class AutoLowBarHighGoal extends CommandGroup {
     
-    public autoCrossDefence() {
-    	requires(Robot.drivetrain);
-        
-    	addSequential(new autoGoToDefence());
-    	addSequential(new autoCrossDefenceAccel(false));
-        addSequential(new autoMoveDistance(6));
-        
-        if(!Robot.drivetrain.accelFlat())
-        {
-        	addSequential(new autoMoveDistance(6));
-        }
-        
-        if(!Robot.drivetrain.accelFlat())
-        {
-        	addSequential(new autoMoveDistance(12));
-        }
-    	
-    	
+    public  AutoLowBarHighGoal() {
         // Add Commands here:
+    	requires(Robot.drivetrain);
+    	requires(Robot.shooter);
+    	requires(Robot.feeder);
+    	requires(Robot.pivot);
+    	
+    	addSequential(new autoGoToDefence());
+    	addSequential(new autoCrossDefenceAccel(true));
+    	addSequential(new autoMoveDistance(83.7));
+    	addSequential(new autoTurnRobot(45, false));
+    	addParallel(new StartShooter(4000));
+    	//addParallel(new autoSetShooterAngle(64.8));
+    	addSequential(new autoPivotTime(.2));
+    	addSequential(new Shoot());
+    	
+    	
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.

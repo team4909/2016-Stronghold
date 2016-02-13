@@ -82,7 +82,13 @@ public class Robot extends IterativeRobot {
         autoChooser = new SendableChooser();
         autoChooser.addDefault("Spy Low Goal", new SpyLowGoal());
         autoChooser.addObject("Spy High Goal", new SpyHighGoal());
-        autoChooser.addObject("Defence Cross", new CrossDefence());
+        autoChooser.addObject("Defence Cross (not Low Bar)", new autoCrossDefence());
+        autoChooser.addObject("Low Bar Cross", new AutoLowBarCross());
+        autoChooser.addObject("Low Bar High Shot", new AutoLowBarHighGoal());
+        autoChooser.addObject("Low Bar Low Shot", new AutoLowBarLowGoal());
+        autoChooser.addObject("Do Nothing", new AutoDoNothing());
+        
+        
         SmartDashboard.putData("Autonomous Mode Chooser",autoChooser);
         //autoChooser.addObject("Experimental: Cross Defence, Score Low Goal", new CrossLowGoal());
         //autoChooser.addObject("Experimental: Cross Defence,, Score High Goal", new ());
