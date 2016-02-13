@@ -40,7 +40,7 @@ public class Intake extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.shooter.setShooterWheels(-0.25);
+    	Robot.shooter.setShooterWheels(-0.5);
     	Robot.feeder.feedIn();
     }
 
@@ -55,7 +55,7 @@ public class Intake extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished()
     {
-    	return Robot.feeder.getFeedSwitch();
+    	return !Robot.feeder.getFeedSwitch();
     }
 
     // Called once after isFinished returns true

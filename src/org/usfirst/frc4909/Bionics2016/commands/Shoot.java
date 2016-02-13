@@ -48,7 +48,7 @@ public class Shoot extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() { //this was changed
-    	return timeSinceInitialized()>=3.0;
+    	return timeSinceInitialized()>=.05;
     }
 
     // Called once after isFinished returns true

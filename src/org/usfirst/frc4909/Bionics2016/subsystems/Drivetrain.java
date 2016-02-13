@@ -92,7 +92,7 @@ public class Drivetrain extends Subsystem {
     public double getDistTraveledLeft()
     {
     	double dist=0;
-    	double revs=leftDriveEncoder.getRaw()/ENCODER_RES*4;
+    	double revs=leftDriveEncoder.getRaw()/(ENCODER_RES*4);
     	dist=revs*WHEEL_DIAMETER *Math.PI;
     	
     	return dist;
@@ -101,7 +101,7 @@ public class Drivetrain extends Subsystem {
     public double getDistTraveledRight()
     {
     	double dist=0;
-    	double revs=rightDriveEncoder.getRaw()/ENCODER_RES*4;
+    	double revs=rightDriveEncoder.getRaw()/(ENCODER_RES*4);
     	dist=revs*WHEEL_DIAMETER *Math.PI;
     	
     	return dist;
@@ -110,6 +110,7 @@ public class Drivetrain extends Subsystem {
     public void autoDrive(double magnitude, double curve)
     {
     	driveControl.drive(magnitude, curve);
+    	Robot.pivot.pivotUp();
     }
     
     public void resetGyro()

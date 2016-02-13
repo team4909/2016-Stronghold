@@ -107,8 +107,8 @@ public class Robot extends IterativeRobot {
 
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
-        SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
-        SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
+        SmartDashboard.putNumber("left encoder", RobotMap.drivetrainleftDriveEncoder.getRaw());//Robot.shooter.getLeftRPM()
+        SmartDashboard.putNumber("right encoder", RobotMap.drivetrainrightDriveEncoder.getRaw());//Robot.shooter.getRightRPM()
         
         SmartDashboard.putNumber("Accellerometer X",Robot.drivetrain.getAccelX());
         SmartDashboard.putNumber("Accellerometer Y",Robot.drivetrain.getAccelY());
@@ -152,16 +152,20 @@ public class Robot extends IterativeRobot {
                DrawMode.PAINT_VALUE, ShapeMode.SHAPE_RECT, 255f);
         NIVision.imaqDrawShapeOnImage(frame, frame, crossLine,
                 DrawMode.PAINT_VALUE, ShapeMode.SHAPE_RECT, 255f);
-
+        
         //NIVision.imaqOverlayRect(frame, midLine, color, DrawMode.PAINT_VALUE, null );
         CameraServer.getInstance().setImage(frame);
-
         /** robot code here! **/
         //Timer.delay(0.005);		// wait for a motor update time
         
-        SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
-        SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
-        SmartDashboard.putNumber("Test", RobotMap.shooterleftShootEncoder.getRaw());
+        //SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
+        //SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
+        //SmartDashboard.putNumber("Test", RobotMap.shooterleftShootEncoder.getRaw());
+        
+        
+        SmartDashboard.putNumber("left encoder", RobotMap.drivetrainleftDriveEncoder.getRaw());//Robot.shooter.getLeftRPM()
+        SmartDashboard.putNumber("right encoder", RobotMap.drivetrainrightDriveEncoder.getRaw());//Robot.shooter.getRightRPM()
+        
         
         SmartDashboard.putNumber("Accellerometer X",RobotMap.drivetrainaccelerometer.getX());
         SmartDashboard.putNumber("Accellerometer Y",RobotMap.drivetrainaccelerometer.getY());

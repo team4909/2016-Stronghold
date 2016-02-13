@@ -61,7 +61,7 @@ public class Shooter extends Subsystem {
     
     public void setShooterWheels(double setpoint)
     {
-    	shooterLeftWheel.set(setpoint);
+    	shooterLeftWheel.set(-setpoint);
     	shooterRightWheel.set(setpoint);
     }
     
