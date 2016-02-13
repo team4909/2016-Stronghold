@@ -140,7 +140,7 @@ public class Drivetrain extends Subsystem {
     
     public boolean accelFlat()
     {
-    	if(this.getAccelZ() > 0.9 && this.getAccelZ < 1.1)
+    	if(this.getAccelZ() > 0.9 && this.getAccelZ() < 1.1)
     	{
     		return true;
     	}

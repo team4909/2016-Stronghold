@@ -57,7 +57,8 @@ public class RobotMap {
     public static DigitalInput feederfeedSwitch;
     public static SpeedController pivotpivotControl;
     public static Encoder pivotpivotEncoder;
-    public static SpeedController climberclimbMotor;
+    public static SpeedController climberclimbDeliver;
+    public static SpeedController climberclimbWinch;
     public static Encoder climberclimbEncoder;
     public static Compressor feederCompressor;
     public static DoubleSolenoid feederDSol;
@@ -147,10 +148,10 @@ public class RobotMap {
         
         drivetrainaccelerometer = new ADXL362(Range.k8G); //add port number
         
-        leftUltra = new Ultrasonic(6,7);//0,1
+        leftUltra = new Ultrasonic(0,19);//0,1
         LiveWindow.addSensor("Drivetrain", "Left Ultrasonic", leftUltra);
         
-        rightUltra = new Ultrasonic(8,9);//2,3
+        rightUltra = new Ultrasonic(20,21);//2,3
         LiveWindow.addSensor("Drivetrain", "Right Ultrasonic", rightUltra);
         
         //Shooter
@@ -207,8 +208,11 @@ public class RobotMap {
         
         //Climber
         //Climber Motor
-        climberclimbMotor = new Spark(7);
-        LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbMotor);
+        climberclimbDeliver = new Spark(4);
+        LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbDeliver);
+       
+        climberclimbWinch = new Spark(7);
+        LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbWinch);
         
         //Climber Sensors
         climberclimbEncoder = new Encoder(16, 17, false, EncodingType.k4X);
