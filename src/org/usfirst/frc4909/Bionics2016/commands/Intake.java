@@ -41,27 +41,28 @@ public class Intake extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.shooter.setShooterWheels(-0.5);
-    	Robot.feeder.feedIn();
+    	Robot.feeder.retract();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.feeder.getFeedSwitch())
+    	/*if(Robot.feeder.getFeedSwitch())
     	{
     		Robot.feeder.feedIn();
     	}
+    	*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished()
     {
-    	return !Robot.feeder.getFeedSwitch();
+    	return Robot.feeder.getFeedSwitch();
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	Robot.shooter.setShooterWheels(0);
-    	Robot.feeder.stopFeed();
+    	//Robot.feeder.stopFeed();
     }
 
     // Called when another command which requires one or more of the same
