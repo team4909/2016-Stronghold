@@ -83,11 +83,11 @@ public class Pivot extends PIDSubsystem {
     }
     public boolean getTopSwitch()
     {
-    	return pivotTopSwitch.get();
+    	return !pivotTopSwitch.get();
     }
     public boolean getBottomSwitch()
     {
-    	return pivotBottomSwitch.get();
+    	return !pivotBottomSwitch.get();
     }
     public void movePivot(double speed)
     {
@@ -119,7 +119,7 @@ public class Pivot extends PIDSubsystem {
 			output = 0;
 		
     	}
-		pivotControl.pidWrite(output);
+		pivotControl.pidWrite(output/2);
 	}
 }
 
