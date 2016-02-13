@@ -107,6 +107,12 @@ public class Drivetrain extends Subsystem {
     	return dist;
     }
     
+    public void resetEncoders()
+    {
+    	rightDriveEncoder.reset();
+    	leftDriveEncoder.reset();
+    }
+    
     public void autoDrive(double magnitude, double curve)
     {
     	driveControl.drive(magnitude, curve);

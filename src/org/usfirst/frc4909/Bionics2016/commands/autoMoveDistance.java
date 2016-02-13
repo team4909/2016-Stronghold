@@ -22,6 +22,7 @@ public class autoMoveDistance extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.drivetrain.resetGyro();
+    	Robot.drivetrain.resetEncoders();
         while (Robot.drivetrain.getDistTraveledLeft() <= distance && Robot.drivetrain.getDistTraveledRight() <= distance) {
             double angle = Robot.drivetrain.getGyroAngle(); // get current heading
             Robot.drivetrain.autoDrive(0.5, angle*Kp); // drive towards heading 0
@@ -41,7 +42,6 @@ public class autoMoveDistance extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.drivetrain.moveRobot(0, 0);
-
     }
 
     // Called when another command which requires one or more of the same
