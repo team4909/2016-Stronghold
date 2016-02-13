@@ -17,6 +17,7 @@ import org.usfirst.frc4909.Bionics2016.commands.*;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
@@ -49,11 +50,15 @@ public class Drivetrain extends Subsystem {
     private final Encoder rightDriveEncoder = RobotMap.drivetrainrightDriveEncoder;
     private final ADXRS450_Gyro gyro = RobotMap.drivetraingyro;
 	private final BuiltInAccelerometer A = new BuiltInAccelerometer();
+	private final AnalogInput leftUltra = RobotMap.leftUltra;
+	private final AnalogInput rightUltra = RobotMap.rightUltra;
 	boolean straightMode = false;
 	double straightAngle = 0;
 	public Timer roboTimer;
 	final double K = 0.01;
-
+	final double conv = (2.0/(4.9/1000))/2.54;
+	
+	
 	private double WHEEL_DIAMETER = 8;
 	private double ENCODER_RES = 2048;
 
@@ -152,6 +157,13 @@ public class Drivetrain extends Subsystem {
     	}
     	
     	return false;
+    }
+    
+    public double getLeftDistanceFromTarget(){
+    	return leftUltra.getVoltage()*conv;
+    }
+    public double getRightDistanceFromTarget(){
+    	return rightUltra.getVoltage()*conv;
     }
     
     public void initDefaultCommand() {

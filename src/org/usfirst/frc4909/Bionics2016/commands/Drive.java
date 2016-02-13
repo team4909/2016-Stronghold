@@ -13,6 +13,7 @@ package org.usfirst.frc4909.Bionics2016.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -68,6 +69,9 @@ public class Drive extends Command {
     	
     `*/
     	Robot.drivetrain.moveRobot(Robot.oi.getLeft(), Robot.oi.getRight());
+    	SmartDashboard.putNumber("Left Distance", Robot.drivetrain.getLeftDistanceFromTarget());
+    	SmartDashboard.putNumber("Right Distance", Robot.drivetrain.getRightDistanceFromTarget());
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
