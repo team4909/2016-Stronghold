@@ -56,7 +56,7 @@ public class Drivetrain extends Subsystem {
 	double straightAngle = 0;
 	public Timer roboTimer;
 	final double K = 0.01;
-	final double conv = (2.0/(4.9/1000))/2.54;
+	final double conv = ((2.0/(4.9/1000))/2.54)/(4.75/5);
 	
 	
 	private double WHEEL_DIAMETER = 8;

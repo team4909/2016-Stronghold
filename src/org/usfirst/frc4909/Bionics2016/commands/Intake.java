@@ -40,7 +40,7 @@ public class Intake extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.shooter.setShooterWheels(-0.5);
+    	Robot.shooter.setShooterWheels(-0.75);
     	Robot.feeder.retract();
     }
 
