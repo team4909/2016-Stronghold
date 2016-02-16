@@ -157,11 +157,11 @@ public class RobotMap {
         
         //Shooter
         //Shooter Motors
-        shootershooterLeftWheel = new VictorSP(6);//6
-        LiveWindow.addActuator("Shooter", "shooterLeftWheel", (VictorSP) shootershooterLeftWheel);
+        shootershooterLeftWheel = new Spark(6);//6
+        LiveWindow.addActuator("Shooter", "shooterLeftWheel", (Spark) shootershooterLeftWheel);
         
-        shootershooterRightWheel = new VictorSP(8);//8
-        LiveWindow.addActuator("Shooter", "shooterRightWheel", (VictorSP) shootershooterRightWheel);
+        shootershooterRightWheel = new Spark(8);//8
+        LiveWindow.addActuator("Shooter", "shooterRightWheel", (Spark) shootershooterRightWheel);
         
         //Shooter Sensors
         shooterleftShootEncoder = new Encoder(14, 15, false, EncodingType.k4X);
@@ -190,8 +190,8 @@ public class RobotMap {
         
         //Pivot
         //Pivot Motor
-        pivotpivotControl = new Spark(9);
-        LiveWindow.addActuator("Pivot", "pivotControl", (Spark) pivotpivotControl);
+        pivotpivotControl = new VictorSP(4);
+        LiveWindow.addActuator("Pivot", "pivotControl", (VictorSP) pivotpivotControl);
         
         //Pivot Sensors
         pivotTopSwitch= new DigitalInput(1);
@@ -209,7 +209,7 @@ public class RobotMap {
         
         //Climber
         //Climber Motor
-        climberclimbDeliver = new Spark(4);
+        climberclimbDeliver = new Spark(9);
         LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbDeliver);
        
         climberclimbWinch = new Spark(7);
