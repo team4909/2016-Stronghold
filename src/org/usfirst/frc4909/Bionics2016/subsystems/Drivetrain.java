@@ -20,13 +20,13 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.VictorSP;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -52,6 +52,7 @@ public class Drivetrain extends Subsystem {
 	private final BuiltInAccelerometer A = new BuiltInAccelerometer();
 	private final AnalogInput leftUltra = RobotMap.leftUltra;
 	private final AnalogInput rightUltra = RobotMap.rightUltra;
+	private final DigitalOutput sonicStart = RobotMap.ultrasonicStart;
 	boolean straightMode = false;
 	double straightAngle = 0;
 	public Timer roboTimer;
@@ -91,6 +92,9 @@ public class Drivetrain extends Subsystem {
     	driveControl.tankDrive(left, right);
     }
     
+    public void pulseUltrasonics(){
+    	sonicStart.pulse(0, 30.0e-6f);
+    }
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
