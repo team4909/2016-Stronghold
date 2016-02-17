@@ -172,20 +172,20 @@ public class Drivetrain extends Subsystem {
     
     public void turnRobotLeft()
     {
-    	frontLeft.set(0.5);
-    	backLeft.set(0.5);
-    	
-    	frontRight.set(-0.5);
-    	backRight.set(-0.5);
-    }
-    
-    public void turnRobotRight()
-    {
     	frontLeft.set(-0.5);
     	backLeft.set(-0.5);
     	
     	frontRight.set(0.5);
-    	backRight.set(0.5);    	
+    	backRight.set(0.5);
+    }
+    
+    public void turnRobotRight()
+    {
+    	frontLeft.set(0.5);
+    	backLeft.set(0.5);
+    	
+    	frontRight.set(-0.5);
+    	backRight.set(-0.5);    	
     }
     
     public void initDefaultCommand() {
