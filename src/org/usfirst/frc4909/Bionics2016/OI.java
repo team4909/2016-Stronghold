@@ -98,20 +98,23 @@ public class OI {
         */
         
         //Pivot
+        
        /* pivotUpButton = new JoystickButton(operatorControl, 6); //Right Bumper
         pivotUpButton.whenPressed(new PivotUp());
 
         pivotDownButton = new JoystickButton(operatorControl, 5); //Left Bumper
         pivotDownButton.whenPressed(new PivotDown());
         */
+        
         controlPivotButton = new JoystickButton(operatorControl, 11);
         controlPivotButton.whenPressed(new ControlPivot());
+        
         //Shooter/Feeder
         shootButton = new JoystickButton(operatorControl, 8); //Right Trigger
         shootButton.whenPressed(new Shoot());
         
         lowShotButton = new JoystickButton(operatorControl, 2); //A Button
-        lowShotButton.whenPressed(new StartShooter(1000));
+        lowShotButton.whenPressed(new StartShooter(2000));
         
         highShotButton = new JoystickButton(operatorControl, 4); //Y Button
         highShotButton.whenPressed(new StartShooter(4000));
