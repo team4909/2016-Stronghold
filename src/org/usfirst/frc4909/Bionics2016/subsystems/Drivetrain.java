@@ -92,8 +92,12 @@ public class Drivetrain extends Subsystem {
     	driveControl.tankDrive(left, right);
     }
     
-    public void pulseUltrasonics(){
-    	sonicStart.pulse(0, 30.0e-6f);
+    public void pulseUltrasonics(float time){
+    	sonicStart.pulse(0, time);
+    }
+    
+    public void setUltrasonics(boolean state){
+    	sonicStart.set(state);
     }
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
