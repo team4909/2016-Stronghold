@@ -57,7 +57,8 @@ public class RobotMap {
     public static Encoder shooterrightShootEncoder;
     //public static SpeedController feederfeedAxle;
     public static DigitalInput feederfeedSwitch;
-    public static SpeedController pivotpivotControl;
+    public static SpeedController pivotpivotControlLeft;
+    public static SpeedController pivotpivotControlRight;
     public static Encoder pivotpivotEncoder;
     public static SpeedController climberclimbDeliver;
     public static SpeedController climberclimbWinch;
@@ -109,19 +110,19 @@ public class RobotMap {
     	
     	//Drivetrain
     	//Drivetrain Motors
-        drivetrainfrontLeft = new VictorSP(0);//0
+        drivetrainfrontLeft = new VictorSP(0); //Yellow+White
         drivetrainfrontLeft.setInverted(true);
         LiveWindow.addActuator("Drivetrain", "frontLeft", (VictorSP) drivetrainfrontLeft);
         
-        drivetrainbackLeft = new VictorSP(1);//1
+        drivetrainbackLeft = new VictorSP(1);//Yellow+Grey
         drivetrainbackLeft.setInverted(true);
         LiveWindow.addActuator("Drivetrain", "backLeft", (VictorSP) drivetrainbackLeft);
         
-        drivetrainfrontRight = new VictorSP(2);
+        drivetrainfrontRight = new VictorSP(2);//Orange+White
         drivetrainfrontRight.setInverted(true);
         LiveWindow.addActuator("Drivetrain", "frontRight", (VictorSP) drivetrainfrontRight);
         
-        drivetrainbackRight = new VictorSP(3);
+        drivetrainbackRight = new VictorSP(3);//Orange+Grey
         drivetrainbackRight.setInverted(true);
         LiveWindow.addActuator("Drivetrain", "backRight", (VictorSP) drivetrainbackRight);
         
@@ -145,24 +146,24 @@ public class RobotMap {
         drivetrainrightDriveEncoder.setDistancePerPulse(1.0);
         drivetrainrightDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
         
-        drivetraingyro = new ADXRS450_Gyro();//maybe change port number as an argument
+        drivetraingyro = new ADXRS450_Gyro();
         LiveWindow.addSensor("Drivetrain", "gyro", drivetraingyro);
         //drivetraingyro.setSensitivity(0.007);
         
-        drivetrainaccelerometer = new ADXL362(Range.k8G); //add port number
+        drivetrainaccelerometer = new ADXL362(Range.k8G); 
         
-        leftUltra = new AnalogInput(0);//0,1
+        leftUltra = new AnalogInput(0);
         LiveWindow.addSensor("Drivetrain", "Left Ultrasonic", leftUltra);
         
-        rightUltra = new AnalogInput(1);//2,3
+        rightUltra = new AnalogInput(1);
         LiveWindow.addSensor("Drivetrain", "Right Ultrasonic", rightUltra);
         
         //Shooter
         //Shooter Motors
-        shootershooterLeftWheel = new Spark(4);//6
+        shootershooterLeftWheel = new Spark(4);//Blue+White
         LiveWindow.addActuator("Shooter", "shooterLeftWheel", (Spark) shootershooterLeftWheel);
         
-        shootershooterRightWheel = new Spark(6);//8
+        shootershooterRightWheel = new Spark(5);//Blue+Grey
         LiveWindow.addActuator("Shooter", "shooterRightWheel", (Spark) shootershooterRightWheel);
         
         //Shooter Sensors
@@ -179,9 +180,10 @@ public class RobotMap {
         
         //Feeder
         //Feeder Motor
-        /*feederfeedAxle = new Spark(5);
+        /*feederfeedAxle = new Spark(10);
         LiveWindow.addActuator("Feeder", "feedAxle", (Spark) feederfeedAxle);
         */
+        
         //Feeder Sensor
         feederfeedSwitch = new DigitalInput(18);
         LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
@@ -192,8 +194,11 @@ public class RobotMap {
         
         //Pivot
         //Pivot Motor
-        pivotpivotControl = new VictorSP(18);//4
-        LiveWindow.addActuator("Pivot", "pivotControl", (VictorSP) pivotpivotControl);
+        pivotpivotControlLeft = new Spark(6);//Green+White
+        LiveWindow.addActuator("Pivot", "pivotControl", (Spark) pivotpivotControlLeft);
+        
+        pivotpivotControlRight = new Spark(7);//Green+Grey
+        LiveWindow.addActuator("Pivot", "pivotControl", (Spark) pivotpivotControlLeft);
         
         //Pivot Sensors
         pivotTopSwitch= new DigitalInput(1);
@@ -211,10 +216,10 @@ public class RobotMap {
         
         //Climber
         //Climber Motor
-        climberclimbDeliver = new Spark(8);
+        climberclimbDeliver = new Spark(8);//Purple+White
         LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbDeliver);
        
-        climberclimbWinch = new Spark(7);
+        climberclimbWinch = new Spark(9);//Purple+Grey
         LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbWinch);
         
         //Climber Sensors

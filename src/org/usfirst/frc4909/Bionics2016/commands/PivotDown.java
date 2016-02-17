@@ -20,9 +20,11 @@ public class PivotDown extends Command {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.pivot.movePivot(-0.5);
+		//Robot.pivot.movePivot(-0.5);
 
 		//Robot.pivot.pivotControl.set(.5);
+		
+		Robot.pivot.pivotDown();
 	}
 
 	@Override
