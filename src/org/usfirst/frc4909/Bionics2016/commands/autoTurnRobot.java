@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class autoTurnRobot extends Command {
 	private double angle = 0;
-	private boolean dir = false;
+	private boolean turn_left = false;
     public autoTurnRobot(double a, boolean isLeft) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -25,7 +25,7 @@ public class autoTurnRobot extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(dir==true)
+    	if(turn_left)
     	{
     		Robot.drivetrain.turnRobotLeft();
     	}
@@ -39,7 +39,7 @@ public class autoTurnRobot extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Math.abs(Robot.drivetrain.getGyroAngle())>45;
+        return Math.abs(Robot.drivetrain.getGyroAngle())>=angle;
     }
 
     // Called once after isFinished returns true
