@@ -39,7 +39,7 @@ public class ControlPivot extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	//Robot.pivot.setPIDEnable(true);
-    	Robot.pivot.setPIDEnable(false);
+    	//Robot.pivot.setPIDEnable(false);
 
     	
     }

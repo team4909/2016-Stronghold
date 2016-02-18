@@ -155,7 +155,7 @@ public class Robot extends IterativeRobot {
         midLine = new NIVision.Rect(0, 157, 480, 6);
         crossLine = new NIVision.Rect(117, 110, 6, 100);
 
-        cam.setExposureManual(1);
+        //cam.setExposureManual(0);
         cam.setFPS(6);
         cam.startCapture();
     }
@@ -165,7 +165,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        SmartDashboard.putNumber("encoderVal", Robot.pivot.returnPIDInput());
+        //SmartDashboard.putNumber("encoderVal", Robot.pivot.returnPIDInput());
         //NIVision.IMAQdxGrab(session, frame, 1);
         cam.getImage(frame);
         NIVision.imaqDrawShapeOnImage(frame, frame, midLine,
@@ -182,14 +182,16 @@ public class Robot extends IterativeRobot {
         //SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
         //SmartDashboard.putNumber("Test", RobotMap.shooterleftShootEncoder.getRaw());
         
+        SmartDashboard.putNumber("PDB Current6", RobotMap.PDP.getCurrent(6));
+        SmartDashboard.putNumber("PDB Current7", RobotMap.PDP.getCurrent(7));
+
+        //SmartDashboard.putNumber("left encoder", RobotMap.drivetrainleftDriveEncoder.getRaw());//Robot.shooter.getLeftRPM()
+        //SmartDashboard.putNumber("right encoder", RobotMap.drivetrainrightDriveEncoder.getRaw());//Robot.shooter.getRightRPM()
         
-        SmartDashboard.putNumber("left encoder", RobotMap.drivetrainleftDriveEncoder.getRaw());//Robot.shooter.getLeftRPM()
-        SmartDashboard.putNumber("right encoder", RobotMap.drivetrainrightDriveEncoder.getRaw());//Robot.shooter.getRightRPM()
         
-        
-        SmartDashboard.putNumber("Accellerometer X",RobotMap.drivetrainaccelerometer.getX());
-        SmartDashboard.putNumber("Accellerometer Y",RobotMap.drivetrainaccelerometer.getY());
-        SmartDashboard.putNumber("Accellerometer Z",RobotMap.drivetrainaccelerometer.getZ());
+        //SmartDashboard.putNumber("Accellerometer X",RobotMap.drivetrainaccelerometer.getX());
+        //SmartDashboard.putNumber("Accellerometer Y",RobotMap.drivetrainaccelerometer.getY());
+        //SmartDashboard.putNumber("Accellerometer Z",RobotMap.drivetrainaccelerometer.getZ());
     }
 
     /**

@@ -145,15 +145,21 @@ public class OI {
         return rightDrive;
     }
     public double getLeft(){
+    	if( Math.abs(controlDrive.getY())<.1)
+    			return 0;
     	return controlDrive.getY();
     	
     }
     public double getRight(){
-    	return rightDrive.getY();
-    	
+    	if( Math.abs(rightDrive.getY())<.1)
+			return 0;
+	return rightDrive.getY();
     }
     
     public double getLeftOperator(){
+    	//if(operatorControl.getY()>0){
+    		//return operatorControl.getY()/2;
+    	//}
     	return operatorControl.getY();
     	
     }
