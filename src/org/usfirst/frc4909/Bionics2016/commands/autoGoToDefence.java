@@ -21,22 +21,18 @@ public class autoGoToDefence extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
        	Robot.drivetrain.resetGyro();
-       	
-        while (Robot.drivetrain.accelFlat()) {
-            double angle = Robot.drivetrain.getGyroAngle(); // get current heading
-            Robot.drivetrain.autoDrive(0.5, angle*Kp); // drive towards heading 0
-            Timer.delay(0.004);
-        }
-        
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double angle = Robot.drivetrain.getGyroAngle(); // get current heading
+        Robot.drivetrain.autoDrive(0.5, angle*Kp); // drive towards heading 0
+        Timer.delay(0.004);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return true;
+    	return !Robot.drivetrain.accelFlat();
     }
 
     // Called once after isFinished returns true

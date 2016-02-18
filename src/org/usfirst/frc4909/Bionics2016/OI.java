@@ -157,6 +157,8 @@ public class OI {
     }
     
     public double getLeftOperator(){
+    	if( Math.abs(rightDrive.getY())<.1)
+			return 0;
     	//if(operatorControl.getY()>0){
     		//return operatorControl.getY()/2;
     	//}

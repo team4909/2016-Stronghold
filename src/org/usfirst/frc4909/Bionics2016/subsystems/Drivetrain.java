@@ -89,7 +89,7 @@ public class Drivetrain extends Subsystem {
     	}*/
     	//driveControl.arcadeDrive(left,Robot.oi.controlDrive.getX()*.75);
 	
-    	driveControl.arcadeDrive(left, right);
+    	driveControl.tankDrive(left, right);
     }
     
     public void pulseUltrasonics(float time){

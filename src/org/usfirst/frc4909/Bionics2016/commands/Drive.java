@@ -71,9 +71,9 @@ public class Drive extends Command {
 		}
     	
     `*/ 
-    	SmartDashboard.putNumber("Left Distance", Robot.drivetrain.getLeftDistanceFromTarget());
-    	SmartDashboard.putNumber("Right Distance", Robot.drivetrain.getRightDistanceFromTarget());
-    	SmartDashboard.putNumber("Loop Time", Timer.getFPGATimestamp()-pulseTime);
+    	//SmartDashboard.putNumber("Left Distance", Robot.drivetrain.getLeftDistanceFromTarget());
+    	//SmartDashboard.putNumber("Right Distance", Robot.drivetrain.getRightDistanceFromTarget());
+    	//SmartDashboard.putNumber("Loop Time", Timer.getFPGATimestamp()-pulseTime);
     	if(lastState)
     		Robot.drivetrain.pulseUltrasonics(2);
     	/*if(Timer.getFPGATimestamp()-pulseTime>=.250){

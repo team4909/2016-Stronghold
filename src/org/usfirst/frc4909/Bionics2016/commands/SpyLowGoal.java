@@ -17,10 +17,10 @@ public class SpyLowGoal extends CommandGroup {
         
         // Add Commands here:
     	
-    	addParallel(new autoMoveDistance(105)); //make it have right time
-    	//addParallel(new autoSetShooterAngle(85)); //MAKE CORRECT ANGLE!!!
-    	addParallel(new autoPivotTime(.3)); //for w/o encoder only
-    	addSequential(new StartShooter(1000)); //Check RPM
+    	addParallel(new autoMoveDistance(100));
+    	addParallel(new autoSetShooterAngle(10)); //MAKE CORRECT ANGLE!!!
+    	//addParallel(new autoPivotTime(.3)); //for w/o encoder only
+    	addSequential(new StartShooter(2000));
     	addSequential(new Shoot());
     	
     	//Possibility of using the line up methods (ultrasonics and vision) in auto... 

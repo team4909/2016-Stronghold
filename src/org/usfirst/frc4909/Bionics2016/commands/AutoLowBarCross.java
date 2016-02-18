@@ -13,7 +13,8 @@ public class AutoLowBarCross extends CommandGroup {
     	requires(Robot.drivetrain);
     	
     	
-    	addSequential(new autoGoToDefence());
+    	addParallel(new autoGoToDefence());
+    	addSequential(new autoSetShooterAngle(0));
     	addSequential(new autoCrossDefenceAccel(true));
     	addSequential(new autoMoveDistance(12));
         // Add Commands here:

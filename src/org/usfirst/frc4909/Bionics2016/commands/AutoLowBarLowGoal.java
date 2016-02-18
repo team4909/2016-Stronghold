@@ -15,13 +15,15 @@ public class AutoLowBarLowGoal extends CommandGroup {
     	requires(Robot.feeder);
     	requires(Robot.pivot);
     	
-    	addSequential(new autoGoToDefence());
+    	addParallel(new autoGoToDefence());
+    	addSequential(new autoSetShooterAngle(0));
     	addSequential(new autoCrossDefenceAccel(true));
     	addSequential(new autoMoveDistance(83.7));
     	addSequential(new autoTurnRobot(45, false));
+    	addParallel(new autoMoveDistance(144));
     	addParallel(new StartShooter(4000));
-    	//addParallel(new autoSetShooterAngle(70));
-    	addSequential(new autoPivotTime(.3));
+    	addSequential(new autoSetShooterAngle(10));
+    	//addSequential(new autoPivotTime(.2));
     	addSequential(new Shoot());
     	
         // Add Commands here:

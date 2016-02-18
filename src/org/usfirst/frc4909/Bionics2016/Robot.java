@@ -88,7 +88,7 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("Low Bar High Shot", new AutoLowBarHighGoal());
         autoChooser.addObject("Low Bar Low Shot", new AutoLowBarLowGoal());
         autoChooser.addObject("Do Nothing", new AutoDoNothing());
-        
+        cam = new USBCamera("cam0");
         
         SmartDashboard.putData("Autonomous Mode Chooser",autoChooser);
         //autoChooser.addObject("Experimental: Cross Defence, Score Low Goal", new CrossLowGoal());
@@ -109,18 +109,23 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-    	//cam.stopCapture();
+    	try{
+    		cam.stopCapture();
+    	}
+    	catch(Exception ex){
+    		
+    	}
         //NIVision.IMAQdxStopAcquisition(session);    
     }
 
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
-        SmartDashboard.putNumber("left encoder", RobotMap.drivetrainleftDriveEncoder.getRaw());//Robot.shooter.getLeftRPM()
-        SmartDashboard.putNumber("right encoder", RobotMap.drivetrainrightDriveEncoder.getRaw());//Robot.shooter.getRightRPM()
+        //SmartDashboard.putNumber("left encoder", RobotMap.drivetrainleftDriveEncoder.getRaw());//Robot.shooter.getLeftRPM()
+        //SmartDashboard.putNumber("right encoder", RobotMap.drivetrainrightDriveEncoder.getRaw());//Robot.shooter.getRightRPM()
         
-        SmartDashboard.putNumber("Accellerometer X",Robot.drivetrain.getAccelX());
-        SmartDashboard.putNumber("Accellerometer Y",Robot.drivetrain.getAccelY());
-        SmartDashboard.putNumber("Accellerometer Z",Robot.drivetrain.getAccelZ());
+        //SmartDashboard.putNumber("Accellerometer X",Robot.drivetrain.getAccelX());
+        //SmartDashboard.putNumber("Accellerometer Y",Robot.drivetrain.getAccelY());
+        //SmartDashboard.putNumber("Accellerometer Z",Robot.drivetrain.getAccelZ());
     }
 
     public void autonomousInit() {
@@ -142,7 +147,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
-    	cam = new USBCamera("cam0");
+    	
         if (autonomousCommand != null)
         	autonomousCommand.cancel();
         //NIVision.IMAQdxStartAcquisition(session);
@@ -165,7 +170,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        //SmartDashboard.putNumber("encoderVal", Robot.pivot.returnPIDInput());
+        ////SmartDashboard.putNumber("encoderVal", Robot.pivot.returnPIDInput());
         //NIVision.IMAQdxGrab(session, frame, 1);
         cam.getImage(frame);
         NIVision.imaqDrawShapeOnImage(frame, frame, midLine,
@@ -178,20 +183,20 @@ public class Robot extends IterativeRobot {
         /** robot code here! **/
         //Timer.delay(0.005);		// wait for a motor update time
         
-        //SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
-        //SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
-        //SmartDashboard.putNumber("Test", RobotMap.shooterleftShootEncoder.getRaw());
+        ////SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
+        ////SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
+        ////SmartDashboard.putNumber("Test", RobotMap.shooterleftShootEncoder.getRaw());
         
-        SmartDashboard.putNumber("PDB Current6", RobotMap.PDP.getCurrent(6));
-        SmartDashboard.putNumber("PDB Current7", RobotMap.PDP.getCurrent(7));
+        //SmartDashboard.putNumber("PDB Current6", RobotMap.PDP.getCurrent(6));
+        //SmartDashboard.putNumber("PDB Current7", RobotMap.PDP.getCurrent(7));
 
-        //SmartDashboard.putNumber("left encoder", RobotMap.drivetrainleftDriveEncoder.getRaw());//Robot.shooter.getLeftRPM()
-        //SmartDashboard.putNumber("right encoder", RobotMap.drivetrainrightDriveEncoder.getRaw());//Robot.shooter.getRightRPM()
+        ////SmartDashboard.putNumber("left encoder", RobotMap.drivetrainleftDriveEncoder.getRaw());//Robot.shooter.getLeftRPM()
+        ////SmartDashboard.putNumber("right encoder", RobotMap.drivetrainrightDriveEncoder.getRaw());//Robot.shooter.getRightRPM()
         
         
-        //SmartDashboard.putNumber("Accellerometer X",RobotMap.drivetrainaccelerometer.getX());
-        //SmartDashboard.putNumber("Accellerometer Y",RobotMap.drivetrainaccelerometer.getY());
-        //SmartDashboard.putNumber("Accellerometer Z",RobotMap.drivetrainaccelerometer.getZ());
+        ////SmartDashboard.putNumber("Accellerometer X",RobotMap.drivetrainaccelerometer.getX());
+        ////SmartDashboard.putNumber("Accellerometer Y",RobotMap.drivetrainaccelerometer.getY());
+        ////SmartDashboard.putNumber("Accellerometer Z",RobotMap.drivetrainaccelerometer.getZ());
     }
 
     /**
