@@ -72,6 +72,7 @@ public class OI {
     public Button highShotButton;
     public Button intakeButton;
     public Button controlPivotButton;
+    public Button stopTakeFeeder;
 
     
     
@@ -122,6 +123,8 @@ public class OI {
         intakeButton = new JoystickButton(operatorControl, 7); //Left Trigger        
         intakeButton.whenPressed(new Intake());
         
+        stopTakeFeeder = new JoystickButton(operatorControl, 1);
+        stopTakeFeeder.whenPressed(new stopTake());
         /*testerButton = new JoystickButton(operatorControl, 1);
         testerButton.whenPressed(new autoTowerFromDefence());
        */
@@ -157,8 +160,8 @@ public class OI {
     }
     
     public double getLeftOperator(){
-    	if( Math.abs(rightDrive.getY())<.1)
-			return 0;
+    	//if( Math.abs(rightDrive.getY())<.1)
+			//return 0;
     	//if(operatorControl.getY()>0){
     		//return operatorControl.getY()/2;
     	//}

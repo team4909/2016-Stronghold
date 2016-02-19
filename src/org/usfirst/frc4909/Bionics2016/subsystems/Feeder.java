@@ -45,7 +45,7 @@ public class Feeder extends Subsystem {
     
     public boolean getFeedSwitch()
     {
-    	return feedSwitch.get();
+    	return !feedSwitch.get();
     }
     
     public void stopFeed()

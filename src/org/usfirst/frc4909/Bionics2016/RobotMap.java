@@ -111,9 +111,10 @@ public class RobotMap {
     	 * Drivetrain Accelerometer
     	 */
     	
-    	//Drivetrain
+//    	//Drivetrain
     	PDP = new PowerDistributionPanel();
-    	//Drivetrain Motors
+//    	//Drivetrain Motors
+    	//----------------
         drivetrainfrontLeft = new VictorSP(0); //Yellow+White
         drivetrainfrontLeft.setInverted(true);
         LiveWindow.addActuator("Drivetrain", "frontLeft", (VictorSP) drivetrainfrontLeft);
@@ -149,7 +150,8 @@ public class RobotMap {
         LiveWindow.addSensor("Drivetrain", "rightDriveEncoder", drivetrainrightDriveEncoder);
         drivetrainrightDriveEncoder.setDistancePerPulse(1.0);
         drivetrainrightDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
-        
+        //----------------
+//        
         drivetraingyro = new ADXRS450_Gyro();
         LiveWindow.addSensor("Drivetrain", "gyro", drivetraingyro);
         //drivetraingyro.setSensitivity(0.007);
@@ -166,27 +168,28 @@ public class RobotMap {
         //Shooter Motors
         shootershooterLeftWheel = new Spark(4);//Blue+White
         LiveWindow.addActuator("Shooter", "shooterLeftWheel", (Spark) shootershooterLeftWheel);
+        shootershooterLeftWheel.setInverted(true);
         
         shootershooterRightWheel = new Spark(5);//Blue+Grey
         LiveWindow.addActuator("Shooter", "shooterRightWheel", (Spark) shootershooterRightWheel);
-        
-        //Shooter Sensors
-        shooterleftShootEncoder = new Encoder(6, 7, false, EncodingType.k4X);
-        LiveWindow.addSensor("Shooter", "leftShootEncoder", shooterleftShootEncoder);
-        shooterleftShootEncoder.setDistancePerPulse(1.0/4096);
-        shooterleftShootEncoder.setPIDSourceType(PIDSourceType.kRate);
-        
-        shooterrightShootEncoder = new Encoder(8, 9, false, EncodingType.k4X);
-        LiveWindow.addSensor("Shooter", "rightShootEncoder", shooterrightShootEncoder);
-        shooterrightShootEncoder.setDistancePerPulse(1.0);
-        shooterrightShootEncoder.setPIDSourceType(PIDSourceType.kRate);
-        shooterrightShootEncoder.setSamplesToAverage(50);
+        shootershooterRightWheel.setInverted(true);
+//        //Shooter Sensors
+//        shooterleftShootEncoder = new Encoder(6, 7, false, EncodingType.k4X);
+//        LiveWindow.addSensor("Shooter", "leftShootEncoder", shooterleftShootEncoder);
+//        shooterleftShootEncoder.setDistancePerPulse(1.0/4096);
+//        shooterleftShootEncoder.setPIDSourceType(PIDSourceType.kRate);
+//        
+//        shooterrightShootEncoder = new Encoder(8, 9, false, EncodingType.k4X);
+//        LiveWindow.addSensor("Shooter", "rightShootEncoder", shooterrightShootEncoder);
+//        shooterrightShootEncoder.setDistancePerPulse(1.0);
+//        shooterrightShootEncoder.setPIDSourceType(PIDSourceType.kRate);
+//        shooterrightShootEncoder.setSamplesToAverage(50);
         
         //Feeder
         //Feeder Motor
-        /*feederfeedAxle = new Spark(10);
+        feederfeedAxle = new Spark(19);
         LiveWindow.addActuator("Feeder", "feedAxle", (Spark) feederfeedAxle);
-        */
+        
         
         //Feeder Sensor
         feederfeedSwitch = new DigitalInput(18);
@@ -198,7 +201,7 @@ public class RobotMap {
         */
         //Pivot
         //Pivot Motor
-        pivotpivotControl = new Spark(6);//Green+White
+        pivotpivotControl = new Spark(9);//Green+White
         LiveWindow.addActuator("Pivot", "pivotControl", (Spark) pivotpivotControl);
         pivotpivotControl.setInverted(true);
 /*
@@ -228,7 +231,7 @@ public class RobotMap {
         climberclimbDeliver = new Spark(8);//Purple+White
         LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbDeliver);
        
-        climberclimbWinch = new Spark(9);//Purple+Grey
+        climberclimbWinch = new Spark(6);//Purple+Grey
         LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbWinch);
         
         //Climber Sensors
