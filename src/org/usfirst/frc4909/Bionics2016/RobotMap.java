@@ -192,7 +192,7 @@ public class RobotMap {
         
         
         //Feeder Sensor
-        feederfeedSwitch = new DigitalInput(18);
+        feederfeedSwitch = new DigitalInput(6);
         LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
         /*
         feederCompressor = new Compressor(0);

@@ -45,7 +45,7 @@ public class Feeder extends Subsystem {
     
     public boolean getFeedSwitch()
     {
-    	return !feedSwitch.get();
+    	return feedSwitch.get();
     }
     
     public void stopFeed()
@@ -56,12 +56,12 @@ public class Feeder extends Subsystem {
     
     public void feedIn()
     {
-    	feedAxle.set(0.25);
+    	feedAxle.set(.5);
     }
     
     public void feedOut() 
     {
-    	feedAxle.set(-0.25);
+    	feedAxle.set(-1);
     }
     /*
     public void push(){

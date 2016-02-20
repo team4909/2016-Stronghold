@@ -87,7 +87,7 @@ public class Drivetrain extends Subsystem {
     			driveControl.tankDrive(pow, pow-rotCorrection);
     		}
     	}*/
-    	//driveControl.arcadeDrive(left,Robot.oi.controlDrive.getX()*.75);
+    	//driveControl.arcadeDrive(left,right);
 	
     	driveControl.tankDrive(left, right);
     }

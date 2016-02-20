@@ -54,7 +54,10 @@ public class Robot extends IterativeRobot {
     int session;
     Image frame;
     NIVision.Rect midLine;
-    NIVision.Rect crossLine;
+    NIVision.Rect crossLineMid;
+    NIVision.Rect crossLineTop;
+    NIVision.Rect crossLineBottom;
+
     USBCamera cam;
     NIVision.RGBValue color;
     public static NetworkTable table;
@@ -168,10 +171,14 @@ public class Robot extends IterativeRobot {
         
         //USBCamera Crosshair
         
-        midLine = new NIVision.Rect(0, 157, 480, 6);
-        crossLine = new NIVision.Rect(117, 110, 6, 100);
-
-//        cam.setExposureManual(1);
+        midLine = new NIVision.Rect(0, 136, 480, 6);
+        crossLineMid = new NIVision.Rect(162, 89, 6, 100);
+        crossLineBottom = new NIVision.Rect(215, 89, 6, 100);
+        crossLineTop = new NIVision.Rect(0, 89, 6, 100);
+        
+        
+        
+        cam.setExposureManual(1);
         cam.setFPS(6);
         cam.startCapture();
         
@@ -187,10 +194,19 @@ public class Robot extends IterativeRobot {
         //NIVision.IMAQdxGrab(session, frame, 1);
         
         cam.getImage(frame);
+        //Vertical
         NIVision.imaqDrawShapeOnImage(frame, frame, midLine,
                DrawMode.PAINT_VALUE, ShapeMode.SHAPE_RECT, 255f);
-        NIVision.imaqDrawShapeOnImage(frame, frame, crossLine,
+        //CrossMid
+        NIVision.imaqDrawShapeOnImage(frame, frame, crossLineMid,
                 DrawMode.PAINT_VALUE, ShapeMode.SHAPE_RECT, 255f);
+        //CrossBottom
+        NIVision.imaqDrawShapeOnImage(frame, frame, crossLineBottom,
+                DrawMode.PAINT_VALUE, ShapeMode.SHAPE_RECT, 0f);
+        //CrossTop
+        NIVision.imaqDrawShapeOnImage(frame, frame, crossLineTop,
+                DrawMode.PAINT_VALUE, ShapeMode.SHAPE_RECT, 255f);
+        
         
         //NIVision.imaqOverlayRect(frame, midLine, color, DrawMode.PAINT_VALUE, null );
         CameraServer.getInstance().setImage(frame);
@@ -208,6 +224,12 @@ public class Robot extends IterativeRobot {
         ////SmartDashboard.putNumber("left encoder", RobotMap.drivetrainleftDriveEncoder.getRaw());//Robot.shooter.getLeftRPM()
         ////SmartDashboard.putNumber("right encoder", RobotMap.drivetrainrightDriveEncoder.getRaw());//Robot.shooter.getRightRPM()
         
+        SmartDashboard.putNumber("Center X", table.getNumber("centerX", 0));
+        SmartDashboard.putNumber("Center Y", table.getNumber("centerY", 0));
+        SmartDashboard.putNumber("Area", table.getNumber("area", 0));
+        SmartDashboard.putNumber("Width", table.getNumber("width", 0));
+        SmartDashboard.putNumber("Height",table.getNumber("height", 0));
+        SmartDashboard.putNumber("Solidity", table.getNumber("solidity", 0));
         
         ////SmartDashboard.putNumber("Accellerometer X",RobotMap.drivetrainaccelerometer.getX());
         ////SmartDashboard.putNumber("Accellerometer Y",RobotMap.drivetrainaccelerometer.getY());

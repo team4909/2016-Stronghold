@@ -54,7 +54,7 @@ public class Drive extends Command {
 			e.printStackTrace();
 		}
 		*/
-    	pulseTime=Timer.getFPGATimestamp();
+    	//pulseTime=Timer.getFPGATimestamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -74,17 +74,21 @@ public class Drive extends Command {
     	//SmartDashboard.putNumber("Left Distance", Robot.drivetrain.getLeftDistanceFromTarget());
     	//SmartDashboard.putNumber("Right Distance", Robot.drivetrain.getRightDistanceFromTarget());
     	//SmartDashboard.putNumber("Loop Time", Timer.getFPGATimestamp()-pulseTime);
-    	if(lastState)
+    	/*if(lastState)
     		Robot.drivetrain.pulseUltrasonics(2);
     	/*if(Timer.getFPGATimestamp()-pulseTime>=.250){
     		Robot.drivetrain.pulseUltrasonics();
     		pulseTime=Timer.getFPGATimestamp();
     		
     }*/
-    	pulseTime=Timer.getFPGATimestamp();
+    	//pulseTime=Timer.getFPGATimestamp();
+    	
+    	//Tank Drive
     	Robot.drivetrain.moveRobot(Robot.oi.getLeft(), Robot.oi.getRight());
     	
-    	lastState=!lastState;
+    	//Arcade Drive
+    	//Robot.drivetrain.moveRobot(Robot.oi.getLeft(), Robot.oi.getLeftX());
+    	//lastState=!lastState;
 
     }
 

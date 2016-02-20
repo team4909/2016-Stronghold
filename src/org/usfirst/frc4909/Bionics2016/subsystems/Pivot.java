@@ -113,6 +113,7 @@ public class Pivot extends PIDSubsystem {
     		pivotEncoder.reset();
     	}
     	*/
+    	
     	/*if(speed==0){
     		enable();
     		setSetpoint(pivotEncoder.get());
