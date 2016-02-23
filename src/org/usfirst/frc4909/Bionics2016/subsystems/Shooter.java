@@ -61,7 +61,7 @@ public class Shooter extends Subsystem {
     
     public void setShooterWheels(double setpoint)
     {
-    	shooterLeftWheel.set(-setpoint);
+    	shooterLeftWheel.set(setpoint);
     	shooterRightWheel.set(setpoint);
     }
     
@@ -91,14 +91,13 @@ public class Shooter extends Subsystem {
     		{
     			shooterRightWheel.set(shooterRightWheel.get()+0.001);
     		}    	    	
-    	}
-    
-    	
+    	}    	
     }
+    
     public void setShooterRPM(double targetRPM){
-    	//if (getLeftRPM() > targetRPM) shooterLeftWheel.set(0);
-    	//else shooterLeftWheel.set(1);
-    	if (getRightRPM() > targetRPM) shooterRightWheel.set(targetRPM/5000);
+    	if (getLeftRPM() > targetRPM) shooterLeftWheel.set(0);
+    	else shooterLeftWheel.set(1);
+    	if (getRightRPM() > targetRPM) shooterRightWheel.set(0);
     	else shooterRightWheel.set(1);
     }
     public double getLeftRate() {

@@ -3,6 +3,7 @@ package org.usfirst.frc4909.Bionics2016.commands;
 import org.usfirst.frc4909.Bionics2016.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -16,6 +17,7 @@ public class autoCrossDefence extends CommandGroup {
     	addSequential(new autoCrossDefenceAccel(false));
         addSequential(new autoMoveDistance(6));
         
+        /*
         if(!Robot.drivetrain.accelFlat())
         {
         	addSequential(new autoMoveDistance(6));
@@ -25,7 +27,8 @@ public class autoCrossDefence extends CommandGroup {
         {
         	addSequential(new autoMoveDistance(12));
         }
-    	
+        
+    	*/
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

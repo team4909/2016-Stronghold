@@ -4,6 +4,7 @@ import org.usfirst.frc4909.Bionics2016.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -23,7 +24,9 @@ public class autoCrossDefenceAccel extends Command {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {    	
+    protected void initialize() {
+    	SmartDashboard.putNumber("Auto Stage",2);
+
     	starttime=Timer.getFPGATimestamp();
     	Robot.drivetrain.resetGyro();
     }
@@ -42,7 +45,7 @@ public class autoCrossDefenceAccel extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Timer.getFPGATimestamp()-lastNonFlatTime>1;
+    	return Timer.getFPGATimestamp()-lastNonFlatTime>.5 || Timer.getFPGATimestamp()-starttime>=4;
     }
 
     // Called once after isFinished returns true

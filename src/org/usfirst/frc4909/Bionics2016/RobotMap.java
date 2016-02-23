@@ -67,9 +67,9 @@ public class RobotMap {
     public static Encoder climberclimbEncoder;
     //public static Compressor feederCompressor;
     //public static DoubleSolenoid feederDSol;
-    public static AnalogInput leftUltra;
-    public static AnalogInput rightUltra;
-    public static DigitalOutput ultrasonicStart;
+    //public static AnalogInput leftUltra;
+    //public static AnalogInput rightUltra;
+    //public static DigitalOutput ultrasonicStart;
     //public static AnalogPotentiometer pivotPot;
     public static PowerDistributionPanel PDP;
     
@@ -111,6 +111,36 @@ public class RobotMap {
     	 * Drivetrain Accelerometer
     	 */
     	
+    	//11, 13, 15, 17, 18, 22, 26, 27, 29, and 31 can be used as DIO or PWM, but seem to only work being PWM. Do not use as DIO
+    	
+    	/*
+    	 * PWM:
+    	 * Drivetrain Front Left
+    	 * Drivetrain Back Left
+    	 * Drivetrain Front Right
+    	 * Drivetrain Back Right
+    	 * Shooter Left Wheel
+    	 * Shooter Right Wheel
+    	 * Pivot Motor
+    	 * Climber Winch
+    	 * Climber Tape Measure
+    	 * 
+    	 * 
+    	 * DIO:
+    	 * Drivetrain Left Encoder (2)
+    	 * Drivetrain Right Encoder (2)
+    	 * Pivot Encoder (2)
+    	 * Limit Switch Ball In
+    	 * Limit Switch Top
+    	 * Limit Switch Bottom
+    	 * 
+    	 * Maybes:
+    	 * Climber Winch Encoder (2)?
+    	 * Climber Tapemeasure Encoder (2)?
+    	 * 2x Shooter Encoders? (2 per)
+    	 * 
+    	 */
+    	
 //    	//Drivetrain
     	PDP = new PowerDistributionPanel();
 //    	//Drivetrain Motors
@@ -141,7 +171,7 @@ public class RobotMap {
         drivetraindriveControl.setMaxOutput(1.0);
 
         //Drivetrain Sensors
-        drivetrainleftDriveEncoder = new Encoder(10, 11, false, EncodingType.k4X);
+        drivetrainleftDriveEncoder = new Encoder(10, 11, true, EncodingType.k4X);
         LiveWindow.addSensor("Drivetrain", "leftDriveEncoder", drivetrainleftDriveEncoder);
         drivetrainleftDriveEncoder.setDistancePerPulse(1.0);
         drivetrainleftDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
@@ -151,44 +181,44 @@ public class RobotMap {
         drivetrainrightDriveEncoder.setDistancePerPulse(1.0);
         drivetrainrightDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
         //----------------
-//        
+        
         drivetraingyro = new ADXRS450_Gyro();
         LiveWindow.addSensor("Drivetrain", "gyro", drivetraingyro);
         //drivetraingyro.setSensitivity(0.007);
         
         drivetrainaccelerometer = new ADXL362(Range.k8G); 
         
-        leftUltra = new AnalogInput(0);
-        LiveWindow.addSensor("Drivetrain", "Left Ultrasonic", leftUltra);
-        
-        rightUltra = new AnalogInput(1);
-        LiveWindow.addSensor("Drivetrain", "Right Ultrasonic", rightUltra);
+        //leftUltra = new AnalogInput(0);
+        //LiveWindow.addSensor("Drivetrain", "Left Ultrasonic", leftUltra);
+        //rightUltra = new AnalogInput(1);
+        //LiveWindow.addSensor("Drivetrain", "Right Ultrasonic", rightUltra);
         
         //Shooter
         //Shooter Motors
-        shootershooterLeftWheel = new Spark(4);//Blue+White
+        shootershooterLeftWheel = new Spark(5);//Blue+White
         LiveWindow.addActuator("Shooter", "shooterLeftWheel", (Spark) shootershooterLeftWheel);
         shootershooterLeftWheel.setInverted(true);
         
-        shootershooterRightWheel = new Spark(5);//Blue+Grey
+        shootershooterRightWheel = new Spark(4);//Blue+Grey
         LiveWindow.addActuator("Shooter", "shooterRightWheel", (Spark) shootershooterRightWheel);
-        shootershooterRightWheel.setInverted(true);
+        shootershooterRightWheel.setInverted(false);
 //        //Shooter Sensors
-//        shooterleftShootEncoder = new Encoder(6, 7, false, EncodingType.k4X);
-//        LiveWindow.addSensor("Shooter", "leftShootEncoder", shooterleftShootEncoder);
-//        shooterleftShootEncoder.setDistancePerPulse(1.0/4096);
-//        shooterleftShootEncoder.setPIDSourceType(PIDSourceType.kRate);
-//        
-//        shooterrightShootEncoder = new Encoder(8, 9, false, EncodingType.k4X);
-//        LiveWindow.addSensor("Shooter", "rightShootEncoder", shooterrightShootEncoder);
-//        shooterrightShootEncoder.setDistancePerPulse(1.0);
-//        shooterrightShootEncoder.setPIDSourceType(PIDSourceType.kRate);
-//        shooterrightShootEncoder.setSamplesToAverage(50);
+        shooterleftShootEncoder = new Encoder(19, 20, false, EncodingType.k4X);
+        LiveWindow.addSensor("Shooter", "leftShootEncoder", shooterleftShootEncoder);
+        shooterleftShootEncoder.setDistancePerPulse(1.0/1024);
+        shooterleftShootEncoder.setPIDSourceType(PIDSourceType.kRate);
+        
+        shooterrightShootEncoder = new Encoder(23, 24, true, EncodingType.k4X);
+        LiveWindow.addSensor("Shooter", "rightShootEncoder", shooterrightShootEncoder);
+        shooterrightShootEncoder.setDistancePerPulse(1.0/1024);
+        shooterrightShootEncoder.setPIDSourceType(PIDSourceType.kRate);
+        shooterrightShootEncoder.setSamplesToAverage(50);
+        
         
         //Feeder
         //Feeder Motor
-        feederfeedAxle = new Spark(19);
-        LiveWindow.addActuator("Feeder", "feedAxle", (Spark) feederfeedAxle);
+        feederfeedAxle = new VictorSP(6);
+        LiveWindow.addActuator("Feeder", "feedAxle", (VictorSP) feederfeedAxle);
         
         
         //Feeder Sensor
@@ -211,16 +241,17 @@ public class RobotMap {
 */
         //Pivot Sensors
         pivotTopSwitch= new DigitalInput(2);
-        LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
+        LiveWindow.addSensor("Feeder", "feedSwitch", pivotTopSwitch);
         
-        pivotBottomSwitch = new DigitalInput(3);
-        LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
+        pivotBottomSwitch = new DigitalInput(8);
+        LiveWindow.addSensor("Feeder", "feedSwitch", pivotBottomSwitch);
 
         pivotpivotEncoder = new Encoder(0, 1, true, EncodingType.k4X);
 
         LiveWindow.addSensor("Pivot", "pivotEncoder", pivotpivotEncoder);
         pivotpivotEncoder.setDistancePerPulse(360.0/7455);
         pivotpivotEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
+        
         /*
         pivotPot = new AnalogPotentiometer(2,265,0);//Port, Range, offset
         LiveWindow.addSensor("Pivot", "pivotPot", pivotPot);
@@ -231,7 +262,7 @@ public class RobotMap {
         climberclimbDeliver = new Spark(8);//Purple+White
         LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbDeliver);
        
-        climberclimbWinch = new Spark(6);//Purple+Grey
+        climberclimbWinch = new Spark(7);//Purple+Grey
         LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbWinch);
         
         //Climber Sensors
@@ -241,6 +272,6 @@ public class RobotMap {
         climberclimbEncoder.setPIDSourceType(PIDSourceType.kRate);
         // END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTORS
         
-        ultrasonicStart = new DigitalOutput(24);
+        //ultrasonicStart = new DigitalOutput(24);
     }
 }

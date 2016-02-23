@@ -59,13 +59,17 @@ public class StartShooter extends Command {
         //SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
         //SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
         Robot.shooter.setShooterWheels(targetRPM / 4000);
+    	//Robot.shooter.setShooterRPM(targetRPM);
        // System.out.println(Robot.shooter.getRightRPM());
      //   System.out.println(Robot.shooter.getLeftRPM());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Timer.getFPGATimestamp() - startTime > targetRPM / 1000;
+        //return Timer.getFPGATimestamp() - startTime > targetRPM / 1000;
+    	//return Math.abs(Robot.shooter.getLeftRPM()-targetRPM)>200 && Math.abs(Robot.shooter.getLeftRPM()-targetRPM)>200;
+    	return false;
+
     }
 
     // Called once after isFinished returns true

@@ -34,7 +34,7 @@ public class PivotUp extends Command {
 		//return !Robot.oi.pivotUpButton.get();
 		//return false; //Robot.pivot.onTarget();
 		
-		return Robot.pivot.getTopSwitch();
+		return true;//Robot.pivot.getTopSwitch();
 
 	}
 

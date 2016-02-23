@@ -115,10 +115,10 @@ public class OI {
         shootButton.whenPressed(new Shoot());
         
         lowShotButton = new JoystickButton(operatorControl, 2); //A Button
-        lowShotButton.whenPressed(new StartShooter(2000));
+        lowShotButton.whenPressed(new StartShooter(2000)); //1500
         
         highShotButton = new JoystickButton(operatorControl, 4); //Y Button
-        highShotButton.whenPressed(new StartShooter(4000));
+        highShotButton.whenPressed(new StartShooter(4000)); //4500
         
         intakeButton = new JoystickButton(operatorControl, 7); //Left Trigger        
         intakeButton.whenPressed(new Intake());
@@ -148,14 +148,20 @@ public class OI {
         return rightDrive;
     }
     public double getLeft(){
-    	if( Math.abs(controlDrive.getY())<.1)
+    	if( Math.abs(controlDrive.getY())<.05)
     			return 0;
+    	//if(Math.abs(controlDrive.getY())<.95)
+    		//return controlDrive.getY()/2;
+    	//return controlDrive.getY();
     	return controlDrive.getY()*Math.abs(controlDrive.getY());
     	
     }
     public double getRight(){
-    	if( Math.abs(rightDrive.getY())<.1)
+    	if( Math.abs(rightDrive.getY())<.05)
 			return 0;
+    	//if(Math.abs(rightDrive.getY())<.95)
+    		//return rightDrive.getY()/2;
+    	//return rightDrive.getY();
 	return rightDrive.getY()*Math.abs(rightDrive.getY());
     }
     public double getLeftX(){
@@ -172,6 +178,22 @@ public class OI {
     	//}
     	return operatorControl.getY();
     	
+    }
+    public double getRightOperator(){
+    	//if( Math.abs(rightDrive.getY())<.1)
+			//return 0;
+    	//if(operatorControl.getY()>0){
+    		//return operatorControl.getY()/2;
+    	//}
+    	if(operatorControl.getRawAxis(3)<0)
+    	{
+        	return operatorControl.getRawAxis(3)/4;
+    	}
+    	return operatorControl.getRawAxis(3)/2;
+    	
+    }
+    public double getDriveSlide(){
+    	return controlDrive.getRawAxis(3);
     }
 }
 

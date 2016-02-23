@@ -56,7 +56,7 @@ public class Feeder extends Subsystem {
     
     public void feedIn()
     {
-    	feedAxle.set(.5);
+    	feedAxle.set(1);
     }
     
     public void feedOut() 

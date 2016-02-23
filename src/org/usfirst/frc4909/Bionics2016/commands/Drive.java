@@ -84,7 +84,7 @@ public class Drive extends Command {
     	//pulseTime=Timer.getFPGATimestamp();
     	
     	//Tank Drive
-    	Robot.drivetrain.moveRobot(Robot.oi.getLeft(), Robot.oi.getRight());
+    	Robot.drivetrain.moveRobot(Robot.oi.getLeft()*(((-Robot.oi.getDriveSlide()+1)/4)+.5), Robot.oi.getRight()*(((-Robot.oi.getDriveSlide()+1)/4)+.5));
     	
     	//Arcade Drive
     	//Robot.drivetrain.moveRobot(Robot.oi.getLeft(), Robot.oi.getLeftX());

@@ -4,6 +4,7 @@ import org.usfirst.frc4909.Bionics2016.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -20,6 +21,8 @@ public class autoGoToDefence extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	SmartDashboard.putNumber("Auto Stage",1);
+
        	Robot.drivetrain.resetGyro();
     }
 
@@ -27,7 +30,7 @@ public class autoGoToDefence extends Command {
     protected void execute() {
     	double angle = Robot.drivetrain.getGyroAngle(); // get current heading
         Robot.drivetrain.autoDrive(0.5, angle*Kp); // drive towards heading 0
-        Timer.delay(0.004);
+        //Timer.delay(0.004);
     }
 
     // Make this return true when this Command no longer needs to run execute()
