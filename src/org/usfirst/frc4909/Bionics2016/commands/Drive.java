@@ -87,7 +87,7 @@ public class Drive extends Command {
     	Robot.drivetrain.moveRobot(Robot.oi.getLeft()*(((-Robot.oi.getDriveSlide()+1)/4)+.5), Robot.oi.getRight()*(((-Robot.oi.getDriveSlide()+1)/4)+.5));
     	
     	//Arcade Drive
-    	//Robot.drivetrain.moveRobot(Robot.oi.getLeft(), Robot.oi.getLeftX());
+    	//Robot.drivetrain.moveRobot(Robot.oi.getLeft()*(((-Robot.oi.getDriveSlide()+1)/4)+.5), Robot.oi.getLeftX()*(((-Robot.oi.getDriveSlide()+1)/4)+.5));
     	//lastState=!lastState;
 
     }

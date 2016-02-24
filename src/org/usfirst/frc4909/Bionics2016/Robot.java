@@ -177,10 +177,10 @@ public class Robot extends IterativeRobot {
         
         //USBCamera Crosshair
         
-        midLine = new NIVision.Rect(0, 143, 480, 2);
-        crossLineBottom = new NIVision.Rect(225, 94, 2, 100);
-        crossLineMid = new NIVision.Rect(192, 94, 2, 100);
-        crossLineTop = new NIVision.Rect(153, 94, 2, 100);
+        midLine = new NIVision.Rect(0, 138, 480, 2);
+        crossLineBottom = new NIVision.Rect(225, 89, 2, 100);
+        crossLineMid = new NIVision.Rect(192, 89, 2, 100);
+        crossLineTop = new NIVision.Rect(153, 89, 2, 100);
         
         
         

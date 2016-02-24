@@ -13,10 +13,11 @@ public class autoCrossDefence extends CommandGroup {
     public autoCrossDefence() {
     	requires(Robot.drivetrain);
         
-    	addSequential(new autoGoToDefence());
-    	addSequential(new autoCrossDefenceAccel(false));
-        addSequential(new autoMoveDistance(6));
-        
+    	//addSequential(new autoGoToDefence());
+    	//addSequential(new autoCrossDefenceAccel(false));
+        //addSequential(new autoMoveDistance(6));
+        addSequential(new autoMoveTime(3.5));
+    	
         /*
         if(!Robot.drivetrain.accelFlat())
         {

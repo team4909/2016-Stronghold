@@ -4,38 +4,39 @@ import org.usfirst.frc4909.Bionics2016.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class autoGoToDefence extends Command {
-	
+public class autoMoveTime extends Command {
+	private double time;
+	private double startTime;
 	private double Kp=0.03;
+
 	
-    public autoGoToDefence() {
+    public autoMoveTime(double seconds) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
+    	time=seconds;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	SmartDashboard.putNumber("Auto Stage",1);
-
-       	Robot.drivetrain.resetGyro();
+    	startTime=Timer.getFPGATimestamp();
+    	Robot.drivetrain.resetGyro();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double angle = Robot.drivetrain.getGyroAngle(); // get current heading
-        Robot.drivetrain.autoDrive(0.4, angle*Kp); // drive towards heading 0
-        //Timer.delay(0.004);
+        Robot.drivetrain.autoDrive(0.5, angle*Kp); // drive towards heading 0
+    	//Robot.drivetrain.autoDrive(0.5, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return !Robot.drivetrain.accelFlat();
+        return Timer.getFPGATimestamp()-startTime>=time;
     }
 
     // Called once after isFinished returns true

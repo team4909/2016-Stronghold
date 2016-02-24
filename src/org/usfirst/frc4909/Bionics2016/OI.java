@@ -165,7 +165,7 @@ public class OI {
 	return rightDrive.getY()*Math.abs(rightDrive.getY());
     }
     public double getLeftX(){
-    	if( Math.abs(controlDrive.getX())<.1)
+    	if( Math.abs(controlDrive.getX())<.02)
 			return 0;
     	return controlDrive.getX()*controlDrive.getX()*controlDrive.getX();
 
