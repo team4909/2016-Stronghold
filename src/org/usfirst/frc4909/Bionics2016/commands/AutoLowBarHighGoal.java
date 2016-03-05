@@ -16,8 +16,21 @@ public class AutoLowBarHighGoal extends CommandGroup {
     	requires(Robot.feeder);
     	requires(Robot.pivot);
     	
-    	addParallel(new autoGoToDefence());
+    	
+//    	addSequential(new autoSetShooterAngle(0));
+//    	addSequential(new autoGoToDefence());
+//    	addSequential(new autoCrossDefenceAccel(true));
+//    	addSequential(new autoMoveDistance(83.7));
+//    	addSequential(new autoTurnRobot(60, false));
+//    	addParallel(new autoMoveDistance(96));
+//    	addParallel(new StartShooter(4000));
+//    	addSequential(new autoSetShooterAngle(45));
+//    	//addSequential(new autoPivotTime(.2));
+//    	addSequential(new Shoot());
+    	
+    	
     	addSequential(new autoSetShooterAngle(0));
+    	addSequential(new autoGoToDefence());
     	addSequential(new autoCrossDefenceAccel(true));
     	addSequential(new autoMoveDistance(83.7));
     	addSequential(new autoTurnRobot(60, false));
@@ -26,7 +39,7 @@ public class AutoLowBarHighGoal extends CommandGroup {
     	addSequential(new autoSetShooterAngle(45));
     	//addSequential(new autoPivotTime(.2));
     	addSequential(new Shoot());
-    	
+
     	
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

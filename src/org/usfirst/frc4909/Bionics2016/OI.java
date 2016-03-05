@@ -73,6 +73,9 @@ public class OI {
     public Button intakeButton;
     public Button controlPivotButton;
     public Button stopTakeFeeder;
+    public Button horizontalAimButton;
+    public Button verticalAimButton;
+    public Button driveButton;
 
     
     
@@ -100,6 +103,9 @@ public class OI {
         
         //Pivot
         
+        controlPivotButton = new JoystickButton(operatorControl, 11);
+        controlPivotButton.whenPressed(new ControlPivot());
+        
        /* pivotUpButton = new JoystickButton(operatorControl, 6); //Right Bumper
         pivotUpButton.whenPressed(new PivotUp());
 
@@ -107,8 +113,17 @@ public class OI {
         pivotDownButton.whenPressed(new PivotDown());
         */
         
-        controlPivotButton = new JoystickButton(operatorControl, 11);
-        controlPivotButton.whenPressed(new ControlPivot());
+        //Drivetrain
+        
+        horizontalAimButton = new JoystickButton(controlDrive, 1);
+        horizontalAimButton.whenPressed(new HorizontalAim());
+        
+        driveButton = new JoystickButton(controlDrive, 2);
+        driveButton.whenPressed(new Drive());
+
+        verticalAimButton = new JoystickButton(operatorControl, 3);
+        verticalAimButton.whenPressed(new VerticalAim());
+        
         
         //Shooter/Feeder
         shootButton = new JoystickButton(operatorControl, 8); //Right Trigger

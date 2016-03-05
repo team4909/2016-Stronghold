@@ -142,13 +142,13 @@ public class Pivot extends PIDSubsystem {
 	@Override
 	public double returnPIDInput() {
 		// TODO Auto-generated method stub
-		return pivotEncoder.get();
+		return pivotEncoder.getDistance();
 	}
 	
 	@Override
 	public void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		if((output < 0 && getBottomSwitch()) || this.onTarget()) //|| (output > 0 && getTopSwitch()) 
+		if((output < 0 && getBottomSwitch()) || this.onTarget() || (output > 0 && getTopSwitch()))
 		{
 			output = 0;
     	}

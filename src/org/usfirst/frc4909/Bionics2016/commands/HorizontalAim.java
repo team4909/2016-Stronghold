@@ -2,37 +2,89 @@ package org.usfirst.frc4909.Bionics2016.commands;
 
 import org.usfirst.frc4909.Bionics2016.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class HorizontalAim extends Command {
-	private double kP = 1.0/640;
+	private double kP = 1.0/(320.0/2); //1.0/320
+	private double kI = .00015;//.0002
 	private double error;
+	double[] x={0.0};
+	int total=0;
+	double correctionL=0;
+	double correctionR=0;
+	double timeSinceVisible;
+	double timeSinceInRange;
+	double targetX=0;
+	double maxWidth=0;
+	int i=0;
+	int index=0;
     public HorizontalAim() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	SmartDashboard.putString("Done X", "No");
+
+    	timeSinceVisible=Timer.getFPGATimestamp();
+    	timeSinceInRange=Timer.getFPGATimestamp();
+
+    	total=0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double targetX = Robot.table.getNumber("centerX", 0);
-        error = targetX-320;
-        Robot.drivetrain.moveRobot(-error * kP+.1*-Math.signum(error), error * kP+.1*Math.signum(error));
+    	maxWidth=0;
+    	i=0;
+    	index=0;
+    	if(Robot.table.getNumberArray("centerX",x).length>0){
+	    	for(double d: Robot.table.getNumberArray("width",x) ){
+	    		if(d>maxWidth){
+	    			maxWidth=d;
+	    			index=i;
+	    		}
+	    		i++;
+	    	}
+	    	
+	    	timeSinceVisible=Timer.getFPGATimestamp();
+	        targetX = Robot.table.getNumberArray("centerX", x)[index];
+	        error = targetX-160;
+	        if(!(Math.abs(error)<4))
+	        	timeSinceInRange=Timer.getFPGATimestamp();
+
+	        if((total>0)!=(error>0))
+	        	total=0;
+	        total+=error;
+	        SmartDashboard.putNumber("error X",error);
+	        SmartDashboard.putNumber("calc X",error * kP);
+	        SmartDashboard.putNumber("cX", Robot.table.getNumberArray("centerX", x)[index]);
+	        SmartDashboard.putNumber("kI X", total*kI);
+	        correctionL=-error * kP+(-total*kI);
+	        correctionR=error * kP+(total*kI);
+	        if(Math.abs(correctionL)>.5){
+	        	correctionL=Math.signum(correctionL)*.5;
+	        	correctionR=Math.signum(correctionR)*.5;
+	        }
+	        Robot.drivetrain.moveRobot(-correctionL, -correctionR);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Math.abs(error)<10;
+        return Timer.getFPGATimestamp()-timeSinceInRange>.15 || Timer.getFPGATimestamp()-timeSinceVisible>.2;//Math.abs(error)<3
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	SmartDashboard.putString("Done X", "Yes");
+        Robot.drivetrain.moveRobot(0, 0);
     }
 
     // Called when another command which requires one or more of the same
