@@ -76,7 +76,7 @@ public class OI {
     public Button horizontalAimButton;
     public Button verticalAimButton;
     public Button driveButton;
-
+    public Button arcadeDriveButton;
     
     
     public OI() {
@@ -115,14 +115,17 @@ public class OI {
         
         //Drivetrain
         
-        horizontalAimButton = new JoystickButton(controlDrive, 1);
-        horizontalAimButton.whenPressed(new HorizontalAim());
+//        horizontalAimButton = new JoystickButton(controlDrive, 1);
+//        horizontalAimButton.whenPressed(new HorizontalAim());
         
-        driveButton = new JoystickButton(controlDrive, 2);
+        driveButton = new JoystickButton(rightDrive, 1);
         driveButton.whenPressed(new Drive());
 
-        verticalAimButton = new JoystickButton(operatorControl, 3);
-        verticalAimButton.whenPressed(new VerticalAim());
+        arcadeDriveButton = new JoystickButton(controlDrive, 1);
+        arcadeDriveButton.whenPressed(new ArcadeDrive());
+        
+//        verticalAimButton = new JoystickButton(operatorControl, 3);
+//        verticalAimButton.whenPressed(new VerticalAim());
         
         
         //Shooter/Feeder
@@ -180,11 +183,19 @@ public class OI {
 	return rightDrive.getY()*Math.abs(rightDrive.getY());
     }
     public double getLeftX(){
-    	if( Math.abs(controlDrive.getX())<.02)
+    	if( Math.abs(controlDrive.getX())<.01)
 			return 0;
     	return controlDrive.getX()*controlDrive.getX()*controlDrive.getX();
+    }
+    
+    public double getLeftRot(){
+    	if( Math.abs(controlDrive.getRawAxis(2))<.01)
+			return 0;
+    	return controlDrive.getRawAxis(2)*controlDrive.getRawAxis(2)*controlDrive.getRawAxis(2);
 
     }
+    
+    
     public double getLeftOperator(){
     	//if( Math.abs(rightDrive.getY())<.1)
 			//return 0;

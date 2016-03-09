@@ -199,5 +199,11 @@ public class Drivetrain extends Subsystem {
     	
     	setDefaultCommand(new Drive());
     }
+
+	public void arcadeDrive(double left, double right) {
+		driveControl.arcadeDrive(left,right);
+		// TODO Auto-generated method stub
+		
+	}
 }
 
