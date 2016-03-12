@@ -56,8 +56,8 @@ public class StartShooter extends Command {
     	//Robot.shooter.useRightRate(targetRPM);
     	//Robot.shooter.setShooterRPM(targetRPM);
         //SmartDashboard.putNumber("Target RPM", targetRPM);
-        //SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
-        //SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
+        SmartDashboard.putNumber("left encoder", Robot.shooter.getLeftRPM());
+        SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
         Robot.shooter.setShooterWheels(targetRPM / 4000);
     	//Robot.shooter.setShooterRPM(targetRPM);
        // System.out.println(Robot.shooter.getRightRPM());

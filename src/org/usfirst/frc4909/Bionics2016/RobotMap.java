@@ -145,19 +145,19 @@ public class RobotMap {
     	PDP = new PowerDistributionPanel();
 //    	//Drivetrain Motors
     	//----------------
-        drivetrainfrontLeft = new VictorSP(0); //Yellow+White
+        drivetrainfrontLeft = new VictorSP(0); //Yellow+White//0
         drivetrainfrontLeft.setInverted(true);
         LiveWindow.addActuator("Drivetrain", "frontLeft", (VictorSP) drivetrainfrontLeft);
         
-        drivetrainbackLeft = new VictorSP(1);//Yellow+Grey
+        drivetrainbackLeft = new VictorSP(1);//Yellow+Grey//1
         drivetrainbackLeft.setInverted(true);
         LiveWindow.addActuator("Drivetrain", "backLeft", (VictorSP) drivetrainbackLeft);
         
-        drivetrainfrontRight = new VictorSP(2);//Orange+White
+        drivetrainfrontRight = new VictorSP(2);//Orange+White//2
         drivetrainfrontRight.setInverted(true);
         LiveWindow.addActuator("Drivetrain", "frontRight", (VictorSP) drivetrainfrontRight);
         
-        drivetrainbackRight = new VictorSP(3);//Orange+Grey
+        drivetrainbackRight = new VictorSP(3);//Orange+Grey//3
         drivetrainbackRight.setInverted(true);
         LiveWindow.addActuator("Drivetrain", "backRight", (VictorSP) drivetrainbackRight);
         
@@ -240,7 +240,7 @@ public class RobotMap {
         pivotpivotControlRight.setInverted(true);
 */
         //Pivot Sensors
-        pivotTopSwitch= new DigitalInput(2);
+        pivotTopSwitch= new DigitalInput(16);
         LiveWindow.addSensor("Feeder", "feedSwitch", pivotTopSwitch);
         
         pivotBottomSwitch = new DigitalInput(8);

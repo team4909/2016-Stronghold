@@ -26,6 +26,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -103,16 +104,19 @@ public class Pivot extends PIDSubsystem {
     {	
     	
     	//speed=-speed;
-    	
-    	if(speed < 0 && getBottomSwitch()){
-//    		disable();
-    		speed=0;
-    	}
-    	
-    	if(speed > 0 && getTopSwitch()){
-    		disable();
-    		speed=0;
-    		pivotEncoder.reset();
+    	boolean disableLimitSwitches = SmartDashboard.getBoolean("DisableLimitSwitches", false);
+    	if(! disableLimitSwitches)
+    	{
+	    	if(speed < 0 && getBottomSwitch()){
+	//    		disable();
+	    		speed=0;
+	    	}
+	    	
+	    	if(speed > 0 && getTopSwitch()){
+	    		disable();
+	    		speed=0;
+	    		pivotEncoder.reset();
+	    	}
     	}
     	
     	//disable();
