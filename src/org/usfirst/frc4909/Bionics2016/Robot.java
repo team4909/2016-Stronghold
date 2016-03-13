@@ -200,9 +200,9 @@ public class Robot extends IterativeRobot {
 			Image frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 			NIVision.RGBValue color = new RGBValue(0,255,0,255);
 
-	        cam.setExposureManual(0);
+	       // cam.setExposureManual(1);
 	        cam.setFPS(6);
-	        cam.setBrightness(100);
+	       // cam.setBrightness(100);
 	        cam.startCapture();
 			
 			 //NIVision Crosshair
@@ -259,6 +259,10 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putNumber("right encoder", Robot.shooter.getRightRPM());
+        SmartDashboard.putBoolean("High Goal Ready", Robot.shooter.getRightRPM() >= 5000);
+        
+        SmartDashboard.putBoolean("Log Goal Ready", Robot.shooter.getRightRPM() >= 2200);
 
        
         
