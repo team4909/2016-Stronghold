@@ -265,7 +265,7 @@ public class RobotMap {
         climberclimbWinch = new Spark(7);//Purple+Grey
         LiveWindow.addActuator("Climber", "climbMotor", (Spark) climberclimbWinch);
         
-        //Climber Sensors
+        //Climber Sensors Will never exsist 
         climberclimbEncoder = new Encoder(14, 15, false, EncodingType.k4X);
         LiveWindow.addSensor("Climber", "climbEncoder", climberclimbEncoder);
         climberclimbEncoder.setDistancePerPulse(1.0);
