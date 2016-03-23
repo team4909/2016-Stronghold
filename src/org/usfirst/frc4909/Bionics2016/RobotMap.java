@@ -234,11 +234,12 @@ public class RobotMap {
         pivotpivotControl = new Spark(9);//Green+White
         LiveWindow.addActuator("Pivot", "pivotControl", (Spark) pivotpivotControl);
         pivotpivotControl.setInverted(true);
-/*
-        pivotpivotControlRight = new Spark(7);//Green+Grey
+        
+
+        /*pivotpivotControlRight = new Spark(7);//Green+Grey
         LiveWindow.addActuator("Pivot", "pivotControl", (Spark) pivotpivotControl);
-        pivotpivotControlRight.setInverted(true);
-*/
+        pivotpivotControlRight.setInverted(true);*/
+        
         //Pivot Sensors
         pivotTopSwitch= new DigitalInput(16);
         LiveWindow.addSensor("Feeder", "feedSwitch", pivotTopSwitch);
@@ -246,7 +247,7 @@ public class RobotMap {
         pivotBottomSwitch = new DigitalInput(8);
         LiveWindow.addSensor("Feeder", "feedSwitch", pivotBottomSwitch);
 
-        pivotpivotEncoder = new Encoder(0, 1, true, EncodingType.k4X);
+        pivotpivotEncoder = new Encoder(17, 18, true, EncodingType.k4X);
 
         LiveWindow.addSensor("Pivot", "pivotEncoder", pivotpivotEncoder);
         pivotpivotEncoder.setDistancePerPulse(360.0/7455);
