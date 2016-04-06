@@ -115,15 +115,15 @@ public class OI {
         
         //Drivetrain
         
-//        horizontalAimButton = new JoystickButton(controlDrive, 1);
-//        horizontalAimButton.whenPressed(new HorizontalAim());
+        horizontalAimButton = new JoystickButton(controlDrive, 1);
+        horizontalAimButton.whenPressed(new HorizontalAim());
         
         driveButton = new JoystickButton(rightDrive, 1);
         driveButton.whenPressed(new Drive());
-
-        arcadeDriveButton = new JoystickButton(controlDrive, 1);
-        arcadeDriveButton.whenPressed(new ArcadeDrive());
-        
+//
+//        arcadeDriveButton = new JoystickButton(controlDrive, 1);
+//        arcadeDriveButton.whenPressed(new ArcadeDrive());
+//        
 //        verticalAimButton = new JoystickButton(operatorControl, 3);
 //        verticalAimButton.whenPressed(new VerticalAim());
         
@@ -133,7 +133,7 @@ public class OI {
         shootButton.whenPressed(new Shoot());
         
         lowShotButton = new JoystickButton(operatorControl, 2); //A Button
-        lowShotButton.whenPressed(new StartShooter(2000)); //1500
+        lowShotButton.whenPressed(new StartShooter(1250)); //1500
         
         highShotButton = new JoystickButton(operatorControl, 4); //Y Button
         highShotButton.whenPressed(new StartShooter(4000)); //4500
@@ -143,9 +143,9 @@ public class OI {
         
         stopTakeFeeder = new JoystickButton(operatorControl, 1);
         stopTakeFeeder.whenPressed(new stopTake());
-        /*testerButton = new JoystickButton(operatorControl, 1);
-        testerButton.whenPressed(new autoTowerFromDefence());
-       */
+//        testerButton = new JoystickButton(operatorControl, 5);
+//        testerButton.whenPressed(new AutoLowBarCross());
+       
         
     }
 
@@ -213,7 +213,7 @@ public class OI {
     	//}
     	if(operatorControl.getRawAxis(3)<0)
     	{
-        	return operatorControl.getRawAxis(3)/4;
+        	return operatorControl.getRawAxis(3)/3;
     	}
     	return operatorControl.getRawAxis(3)/2;
     	

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class HorizontalAim extends Command {
 	private double kP = 1.0/(320.0/2); //1.0/320
-	private double kI = .00015;//.0002
+	private double kI = .0001;//.0002
 	private double error;
 	double[] x={0.0};
 	int total=0;
@@ -23,24 +23,34 @@ public class HorizontalAim extends Command {
 	double maxWidth=0;
 	int i=0;
 	int index=0;
+	AutoLowBarHighGoal parent=null;
     public HorizontalAim() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
     }
+    public HorizontalAim(AutoLowBarHighGoal parent) {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.drivetrain);
+    	this.parent=parent;
+    }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	SmartDashboard.putString("Done X", "No");
-
+    	
     	timeSinceVisible=Timer.getFPGATimestamp();
     	timeSinceInRange=Timer.getFPGATimestamp();
 
     	total=0;
+    	
+    	SmartDashboard.putBoolean("Horizontally Alligned", false);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	try{
     	maxWidth=0;
     	i=0;
     	index=0;
@@ -72,19 +82,33 @@ public class HorizontalAim extends Command {
 	        	correctionL=Math.signum(correctionL)*.5;
 	        	correctionR=Math.signum(correctionR)*.5;
 	        }
-	        Robot.drivetrain.moveRobot(-correctionL, -correctionR);
+	        Robot.drivetrain.moveRobot(correctionL, correctionR);
+    	}
+    	}
+    	catch(Exception ex){
+    		ex.printStackTrace();
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Timer.getFPGATimestamp()-timeSinceInRange>.15 || Timer.getFPGATimestamp()-timeSinceVisible>.2;//Math.abs(error)<3
+    	if(Timer.getFPGATimestamp()-timeSinceInRange>.25){
+    		return true;
+    	}
+    	if(Timer.getFPGATimestamp()-timeSinceVisible>.2){
+    		if(parent!=null)
+    			parent.cancel();
+    		return true;//Math.abs(error)<3}
+    	}
+		return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	SmartDashboard.putString("Done X", "Yes");
         Robot.drivetrain.moveRobot(0, 0);
+        SmartDashboard.putBoolean("Horizontally Alligned", true);
+
     }
 
     // Called when another command which requires one or more of the same

@@ -115,12 +115,12 @@ public class RobotMap {
     	
     	/*
     	 * PWM:
-    	 * Drivetrain Front Left
-    	 * Drivetrain Back Left
-    	 * Drivetrain Front Right
-    	 * Drivetrain Back Right
-    	 * Shooter Left Wheel
-    	 * Shooter Right Wheel
+    	 * 0 Drivetrain Front Left
+    	 * 1 Drivetrain Back Left
+    	 * 2 Drivetrain Front Right
+    	 * 3 Drivetrain Back Right
+    	 * 4 || 5 Shooter Left Wheel
+    	 * 4 || 5 Shooter Right Wheel
     	 * Pivot Motor
     	 * Climber Winch
     	 * Climber Tape Measure
@@ -222,7 +222,7 @@ public class RobotMap {
         
         
         //Feeder Sensor
-        feederfeedSwitch = new DigitalInput(6);
+        feederfeedSwitch = new DigitalInput(7);
         LiveWindow.addSensor("Feeder", "feedSwitch", feederfeedSwitch);
         /*
         feederCompressor = new Compressor(0);
@@ -244,7 +244,7 @@ public class RobotMap {
         pivotTopSwitch= new DigitalInput(16);
         LiveWindow.addSensor("Feeder", "feedSwitch", pivotTopSwitch);
         
-        pivotBottomSwitch = new DigitalInput(8);
+        pivotBottomSwitch = new DigitalInput(21);
         LiveWindow.addSensor("Feeder", "feedSwitch", pivotBottomSwitch);
 
         pivotpivotEncoder = new Encoder(17, 18, true, EncodingType.k4X);

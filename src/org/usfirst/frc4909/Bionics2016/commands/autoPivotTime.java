@@ -9,27 +9,32 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class autoPivotTime extends Command {
-
-	private double time=Timer.getFPGATimestamp();
-    public autoPivotTime(double t) {
+	private int direction;
+	double startTime;
+	private double time;
+    public autoPivotTime(double t, int dir) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	time=t;
+    	direction=dir;
     	requires(Robot.pivot);
-    	time=time+t;
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	startTime = Timer.getFPGATimestamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.pivot.pivotDown();
+    	
+    	Robot.pivot.movePivot(direction*.7);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Timer.getFPGATimestamp()>time;
+        return Timer.getFPGATimestamp()-startTime>time;
     }
 
     // Called once after isFinished returns true
