@@ -59,6 +59,11 @@ public class Intake extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished()
     {
+    	boolean disableIntakeSwitch = SmartDashboard.getBoolean("DisableIntakeSwitch", false);
+    	if(disableIntakeSwitch)
+    	{
+    		return false;
+    	}
     	return Robot.feeder.getFeedSwitch();
     }
 

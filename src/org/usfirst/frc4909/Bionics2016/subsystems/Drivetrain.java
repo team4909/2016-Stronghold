@@ -188,7 +188,7 @@ public class Drivetrain extends Subsystem {
     
     public void turnRobotRight()
     {
-    	driveControl.tankDrive(0.5, -0.5);  	
+    	driveControl.tankDrive(0.5, -0.5);
     }
     
     public void initDefaultCommand() {

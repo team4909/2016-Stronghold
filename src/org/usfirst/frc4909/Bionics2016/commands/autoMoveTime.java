@@ -30,7 +30,7 @@ public class autoMoveTime extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double angle = Robot.drivetrain.getGyroAngle(); // get current heading
-        Robot.drivetrain.autoDrive(0.5, angle*Kp); // drive towards heading 0
+        Robot.drivetrain.autoDrive(0.55, angle*Kp); // drive towards heading 0
     	//Robot.drivetrain.autoDrive(0.5, 0);
     }
 

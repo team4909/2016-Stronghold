@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class autoMoveDistance extends Command {
 	private double distance=5;
 	private double Kp = 0.06;
+	private double Kp2 = 1/240;
+	private double startTime;
 	
     public autoMoveDistance(double dist) {
         // Use requires() here to declare subsystem dependencies
@@ -22,6 +24,7 @@ public class autoMoveDistance extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	startTime=Timer.getFPGATimestamp();
     	Robot.drivetrain.resetGyro();
     	Robot.drivetrain.resetEncoders();
         SmartDashboard.putNumber("Auto Stage",3);
@@ -30,8 +33,10 @@ public class autoMoveDistance extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double error = distance - ((Robot.drivetrain.getDistTraveledLeft()+Robot.drivetrain.getDistTraveledRight())/2);
+    	
     	double angle = Robot.drivetrain.getGyroAngle(); // get current heading
-        Robot.drivetrain.autoDrive(0.25, angle*Kp); // drive towards heading 0
+        Robot.drivetrain.autoDrive(Kp2*error, angle*Kp); // drive towards heading 0//.25
         //Timer.delay(0.004);
     }
 

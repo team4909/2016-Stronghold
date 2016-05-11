@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class VerticalAim extends Command {
-	private double kP = 1.0/240;
-	private double kI = .0002;
+	private double kP = 1.0/(240/4);
+	private double kI = .0001;///.00001
 	private double error;
 	double[] x={0.0};
 	int total=0;
@@ -55,7 +55,7 @@ public class VerticalAim extends Command {
 	    	timeSinceVisible=Timer.getFPGATimestamp();
 	        targetY = Robot.table.getNumberArray("centerY", x)[index];
 	        error = targetY-120;
-	        if(!(Math.abs(error)<3))
+	        if(!(Math.abs(error)<6))
 	        	timeSinceInRange=Timer.getFPGATimestamp();
 
 	        if((total>0)!=(error>0))
@@ -74,8 +74,8 @@ public class VerticalAim extends Command {
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return Timer.getFPGATimestamp()-timeSinceInRange>.15 || Timer.getFPGATimestamp()-timeSinceVisible>.2;//Math.abs(error)<3
+    protected boolean isFinished() {//Timer.getFPGATimestamp()-timeSinceInRange>.15 ||
+        return  Timer.getFPGATimestamp()-timeSinceInRange>.25 ||Timer.getFPGATimestamp()-timeSinceVisible>.2;//Math.abs(error)<3
     }
 
     // Called once after isFinished returns true

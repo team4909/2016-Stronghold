@@ -14,6 +14,7 @@ public class autoTurnRobot extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	angle=a;
+    	turn_left=isLeft;
     }
 
     // Called just before this Command runs the first time

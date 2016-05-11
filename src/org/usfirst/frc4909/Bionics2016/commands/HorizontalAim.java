@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class HorizontalAim extends Command {
-	private double kP = 1.0/(320.0/2); //1.0/320
-	private double kI = .0001;//.0002
+	private double kP = 1.0/(320.0); //1.0/320/2
+	private double kI = .00003;//.00005
 	private double error;
 	double[] x={0.0};
 	int total=0;
@@ -66,7 +66,7 @@ public class HorizontalAim extends Command {
 	    	timeSinceVisible=Timer.getFPGATimestamp();
 	        targetX = Robot.table.getNumberArray("centerX", x)[index];
 	        error = targetX-160;
-	        if(!(Math.abs(error)<4))
+	        if(!(Math.abs(error)<8))
 	        	timeSinceInRange=Timer.getFPGATimestamp();
 
 	        if((total>0)!=(error>0))
@@ -92,7 +92,7 @@ public class HorizontalAim extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Timer.getFPGATimestamp()-timeSinceInRange>.25){
+    	if(Timer.getFPGATimestamp()-timeSinceInRange>.5){
     		return true;
     	}
     	if(Timer.getFPGATimestamp()-timeSinceVisible>.2){
