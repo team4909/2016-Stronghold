@@ -9,10 +9,9 @@ public class SemiautoAim extends CommandGroup {
     
     public  SemiautoAim() {
     	
-    	
+    	addParallel(new VerticalAim());
     	addSequential(new HorizontalAim());
-    	//addSequential(new VerticalAim());
-    	
+    	//    	
     	
     	
     	

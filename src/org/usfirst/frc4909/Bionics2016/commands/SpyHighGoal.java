@@ -20,7 +20,7 @@ public class SpyHighGoal extends CommandGroup {
         // Add Commands here:
     	addSequential(new autoMoveDistance(12)); //MAKE IT WORK!!!
     	//addParallel(new autoPivotTime(.05)); //MAKE CORRECT ANGLE!!!!
-    	addParallel(new autoTurnRobot(3,true));
+    	addParallel(new autoTurnRobot(3));
     	addParallel(new autoSetShooterAngle(42.6));
     	addSequential(new StartShooter(4000)); //Check RPM
     	addSequential(new Shoot());

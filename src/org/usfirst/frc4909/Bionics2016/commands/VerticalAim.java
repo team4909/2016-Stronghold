@@ -22,6 +22,8 @@ public class VerticalAim extends Command {
 	double maxWidth=0;
 	int i=0;
 	int index=0;
+	final double idealY=123;
+
     public VerticalAim() {
     	requires(Robot.pivot);
         // Use requires() here to declare subsystem dependencies
@@ -54,7 +56,7 @@ public class VerticalAim extends Command {
 	    	
 	    	timeSinceVisible=Timer.getFPGATimestamp();
 	        targetY = Robot.table.getNumberArray("centerY", x)[index];
-	        error = targetY-120;
+	        error = targetY-idealY;
 	        if(!(Math.abs(error)<6))
 	        	timeSinceInRange=Timer.getFPGATimestamp();
 

@@ -43,7 +43,7 @@ public class AutoLowBarHighGoal extends CommandGroup {
     	addSequential(new PivotDown());
     	addSequential(new autoPivotTime(.3,1));
     	addSequential(new autoMoveTime(3));
-    	addSequential(new autoTurnRobot(60, false));
+    	addSequential(new autoTurnRobot(60));
     	addSequential(new autoPivotTime(.4,1));
     	addSequential(new HorizontalAim());
     	addSequential(new PivotDown());

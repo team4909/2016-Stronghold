@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class HorizontalAim extends Command {
-	private double kP = 1.0/(320.0); //1.0/320/2
-	private double kI = .00003;//.00005
+	private double kP = 0.0045; //.0025
+	private double kI = .00004;//.00005
 	private double error;
 	double[] x={0.0};
 	int total=0;
@@ -21,6 +21,7 @@ public class HorizontalAim extends Command {
 	double timeSinceInRange;
 	double targetX=0;
 	double maxWidth=0;
+	final double idealX=158;
 	int i=0;
 	int index=0;
 	AutoLowBarHighGoal parent=null;
@@ -65,8 +66,8 @@ public class HorizontalAim extends Command {
 	    	
 	    	timeSinceVisible=Timer.getFPGATimestamp();
 	        targetX = Robot.table.getNumberArray("centerX", x)[index];
-	        error = targetX-160;
-	        if(!(Math.abs(error)<8))
+	        error = targetX-idealX;
+	        if(!(Math.abs(error)<6))
 	        	timeSinceInRange=Timer.getFPGATimestamp();
 
 	        if((total>0)!=(error>0))

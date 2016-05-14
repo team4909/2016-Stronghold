@@ -21,12 +21,18 @@ public class CrossDefenceHighGoal extends CommandGroup {
         
         //addSequential(new CrossDefence()); //based on time, update to be real time or distance
         //addSequential(new autoMoveDistance(120));
-        addSequential(new autoMoveTime(2.5));
+        addSequential(new autoMoveTime(1.65));
     	//addParallel(new autoSetShooterAngle(30)); //make correct angle
-        addSequential(new autoPivotTime(2.5,-1));
-        addSequential(new autoTurnRobot(10, true));
-        addParallel(new HorizontalAim());
-        addSequential(new VerticalAim());
+        addParallel(new autoPivotTime(2.5,-1));
+        addSequential(new autoTurnRobot(25));
+//        addSequential(new autoTurnRobot(80));
+//        addSequential(new autoMoveTime(.75));
+//        addSequential(new autoTurnRobot(-75));
+
+
+//        addParallel(new VerticalAim());
+//        addSequential(new HorizontalAim());
+        addSequential(new SemiautoAim());
     	addSequential(new StartShooter(4000, true));
     	addParallel(new StartShooter(4000, false));//Check this RPM
     	addSequential(new Shoot());

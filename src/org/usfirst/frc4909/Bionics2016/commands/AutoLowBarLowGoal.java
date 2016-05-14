@@ -19,7 +19,7 @@ public class AutoLowBarLowGoal extends CommandGroup {
     	addSequential(new autoSetShooterAngle(0));
     	addSequential(new autoCrossDefenceAccel(true));
     	addSequential(new autoMoveDistance(83.7));
-    	addSequential(new autoTurnRobot(45, false));
+    	addSequential(new autoTurnRobot(45));
     	addParallel(new autoMoveDistance(144));
     	addParallel(new StartShooter(4000));
     	addSequential(new autoSetShooterAngle(10));
