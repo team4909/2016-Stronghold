@@ -83,8 +83,14 @@ public class Drive extends Command {
     }*/
     	//pulseTime=Timer.getFPGATimestamp();
     	
+    	double scaleFactor = 1;//((1 - Robot.oi.getDriveSlide()) * .25) + 0.5;
+    	double spinFactor = 0.75;
+    	
     	//Tank Drive
-    	Robot.drivetrain.moveRobot(Robot.oi.getLeft()*(((-Robot.oi.getDriveSlide()+1)/4)+.5), Robot.oi.getRight()*(((-Robot.oi.getDriveSlide()+1)/4)+.5));
+    	Robot.drivetrain.moveRobot(
+    			Robot.oi.getLeft() * scaleFactor, 
+    			Robot.oi.getRight() * spinFactor
+    	);
     	
     	//Arcade Drive
     	//Robot.drivetrain.moveRobot(Robot.oi.getLeft()*(((-Robot.oi.getDriveSlide()+1)/4)+.5), Robot.oi.getLeftX()*(((-Robot.oi.getDriveSlide()+1)/4)+.5));

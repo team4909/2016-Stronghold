@@ -80,13 +80,13 @@ public class Pivot extends PIDSubsystem {
     
     public void pivotDown()
     {
-    	pivotControl.set(-0.6);
+    	pivotControl.set(-1);
     	//pivotControlRight.set(-0.25);
     }
     
     public void pivotUp()
     {
-    	pivotControl.set(0.6);
+    	pivotControl.set(1);
     	//pivotControlRight.set(0.25);
     }
     

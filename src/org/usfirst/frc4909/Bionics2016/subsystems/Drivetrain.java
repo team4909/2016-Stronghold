@@ -89,9 +89,9 @@ public class Drivetrain extends Subsystem {
     	}*/
     	
     	
-    	//driveControl.arcadeDrive(left,right);
+    	driveControl.arcadeDrive(left,right);
 	
-    	driveControl.tankDrive(left, right);
+    	//driveControl.tankDrive(left, right);
     }
     
     /*

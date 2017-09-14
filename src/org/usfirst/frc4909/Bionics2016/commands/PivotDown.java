@@ -31,7 +31,7 @@ public class PivotDown extends Command {
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
 		//return !Robot.oi.pivotDownButton.get();
-		return Robot.pivot.getBottomSwitch();
+		return false; //Robot.pivot.getBottomSwitch();
 	}
 
 	@Override
