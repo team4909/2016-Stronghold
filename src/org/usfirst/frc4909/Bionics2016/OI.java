@@ -109,12 +109,12 @@ public class OI {
         controlPivotButton = new JoystickButton(operatorControl, 3);
         controlPivotButton.whenPressed(new ControlPivot());
         
-       /* pivotUpButton = new JoystickButton(operatorControl, 6); //Right Bumper
+       pivotUpButton = new JoystickButton(operatorControl, 6); //Right Bumper
         pivotUpButton.whenPressed(new PivotUp());
 
         pivotDownButton = new JoystickButton(operatorControl, 5); //Left Bumper
         pivotDownButton.whenPressed(new PivotDown());
-        */
+        
         
         //Drivetrain
         
@@ -127,8 +127,8 @@ public class OI {
 //        arcadeDriveButton = new JoystickButton(controlDrive, 1);
 //        arcadeDriveButton.whenPressed(new ArcadeDrive());
 //        
-//        verticalAimButton = new JoystickButton(controlDrive, 3);
-//        verticalAimButton.whenPressed(new VerticalAim());
+          verticalAimButton = new JoystickButton(controlDrive, 3);
+          verticalAimButton.whenPressed(new VerticalAim());
         
         verticalAimButton = new JoystickButton(operatorControl, 12);
         verticalAimButton.whenPressed(new VerticalAim());
