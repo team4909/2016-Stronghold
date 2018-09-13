@@ -138,8 +138,8 @@ public class OI {
 
         
         //Shooter/Feeder
-//        shootButton = new JoystickButton(gamepad, 6); //Right Trigger
-//        shootButton.whenPressed(new Shoot());
+        shootButton = new JoystickButton(gamepad, 7); //Right Trigger
+        shootButton.whenPressed(new Shoot());
         
         lowShotButton = new JoystickButton(gamepad, 1); //A Button
         lowShotButton.whenPressed(new StartShooter(1250)); //1500
@@ -147,8 +147,8 @@ public class OI {
         highShotButton = new JoystickButton(gamepad, 4); //Y Button
         highShotButton.whenPressed(new StartShooter(4000)); //4500
         
-//        intakeButton = new JoystickButton(gamepad, 5); //Left Trigger        
-//        intakeButton.whenPressed(new Intake());
+        intakeButton = new JoystickButton(gamepad, 3); //Left Trigger        
+        intakeButton.whenPressed(new Intake());
         
         stopTakeFeeder = new JoystickButton(gamepad, 2);
         stopTakeFeeder.whenPressed(new stopTake());
